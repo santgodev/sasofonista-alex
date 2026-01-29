@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2024-05-23T10:00:00.000Z" agent="Agent" version="21.0.0" type="device">
+  <diagram id="prtHgGhQTEphpp-f5F" name="Booking Flow">
+    <mxGraphModel dx="1106" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Styles -->
+        <mxCell id="start_style" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" />
+        </mxCell>
+        <mxCell id="process_default" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+           <mxGeometry x="0" y="0" width="0" height="0" as="geometry" />
+        </mxCell>
+        <mxCell id="decision_style" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+           <mxGeometry x="0" y="0" width="0" height="0" as="geometry" />
+        </mxCell>
+
+        <!-- Nodes -->
+        <!-- User -->
+        <mxCell id="start" value="Inicio" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="360" y="40" width="80" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="consult" value="Consultar Disponibilidad&#xa;(Web)" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="320" y="160" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="check_avail" value="¿Fecha Disponible?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="330" y="260" width="140" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- End Negative -->
+        <mxCell id="suggest_other" value="Sugerir Otra Fecha /&#xa;Mostrar Ocupado" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="550" y="270" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="end_bad" value="Fin" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+            <mxGeometry x="600" y="370" width="40" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Continue Flow -->
+        <mxCell id="submit_req" value="Enviar Solicitud&#xa;(WhatsApp / Formulario)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="320" y="380" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Admin -->
+        <mxCell id="admin_review" value="Admin Revisa Solicitud" style="shape=actor;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="140" y="480" width="60" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="review_process" value="Revisión de Detalles" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+             <mxGeometry x="240" y="490" width="320" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="decision_admin" value="¿Acepta Evento?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+            <mxGeometry x="330" y="590" width="140" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Reject Path -->
+        <mxCell id="notify_reject" value="Notificar Rechazo&#xa;(Motivo)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+             <mxGeometry x="550" y="600" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="end_reject" value="Fin" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+            <mxGeometry x="600" y="700" width="40" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Accept Path -->
+        <mxCell id="send_proposal" value="Enviar Propuesta /&#xa;Contrato" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+             <mxGeometry x="320" y="720" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="pay_deposit" value="Cliente Paga Anticipo&#xa;(30%)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+             <mxGeometry x="320" y="820" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="confirm_event" value="Evento Confirmado&#xa;(Agendado)" style="shape=star;whiteSpace=wrap;html=1;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;size=0.4;" vertex="1" parent="1">
+             <mxGeometry x="340" y="930" width="120" height="120" as="geometry" />
+        </mxCell>
+
+
+        <!-- Edges -->
+        <mxCell id="e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="start" target="consult">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="consult" target="check_avail">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Decision Avail -->
+        <mxCell id="e3" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="check_avail" target="suggest_other">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="suggest_other" target="end_bad">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e5" value="Sí" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="check_avail" target="submit_req">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Admin -->
+        <mxCell id="e6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="submit_req" target="review_process">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="review_process" target="decision_admin">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Decision Admin -->
+        <mxCell id="e8" value="Rechazar" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="decision_admin" target="notify_reject">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="notify_reject" target="end_reject">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e10" value="Aceptar" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="decision_admin" target="send_proposal">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="send_proposal" target="pay_deposit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="pay_deposit" target="confirm_event">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

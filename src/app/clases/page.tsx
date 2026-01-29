@@ -1,0 +1,86 @@
+
+import { Section } from "@/components/Section";
+import { COURSES } from "@/mocks/courses.mock";
+import { CourseCard } from "@/features/clases/components/CourseCard";
+import { InquiryCTA } from "@/features/clases/components/InquiryCTA";
+import { ImagePlaceholder } from "@/components/ImagePlaceholder";
+import Image from "next/image";
+
+export default function ClasesPage() {
+    return (
+        <>
+            <section className="relative py-24 bg-zinc-900 border-b border-white/5 overflow-hidden">
+                <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+                    <span className="text-primary font-bold tracking-wider uppercase text-sm mb-4 block">Academia de Música</span>
+                    <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">
+                        Descubre Tu Propia Voz
+                    </h1>
+                    <p className="text-xl text-zinc-400 max-w-2xl mx-auto">
+                        Clases personalizadas diseñadas para desbloquear tu potencial musical, sin importar tu nivel actual.
+                    </p>
+                </div>
+
+                {/* Decorative elements */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+                <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+            </section>
+
+            <Section>
+                <div className="space-y-6">
+                    {COURSES.map((course) => (
+                        <CourseCard key={course.id} course={course} />
+                    ))}
+                </div>
+
+                <InquiryCTA />
+            </Section>
+
+            {/* Methodology/Philosophy */}
+            <Section className="bg-zinc-950 border-t border-white/5">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div className="relative w-full h-[500px] rounded-2xl overflow-hidden">
+                            <Image
+                                src="/images/profesor.png"
+                                alt="Profesor Alex en clase"
+                                fill
+                                className="object-cover"
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <h2 className="text-3xl font-serif font-bold text-white mb-6">Mi Enfoque Pedagógico</h2>
+                        <div className="space-y-6 text-zinc-400">
+                            <p>
+                                Creo firmemente que la música es un lenguaje que todos podemos aprender. Mi método se basa en:
+                            </p>
+                            <ul className="space-y-4">
+                                <li className="flex gap-4">
+                                    <div className="w-1 h-full min-h-[1.5em] bg-primary rounded-full" />
+                                    <div>
+                                        <strong className="block text-white">Adaptabilidad</strong>
+                                        Cada alumno es único. Adaptamos el repertorio a tus gustos y el ritmo a tus necesidades.
+                                    </div>
+                                </li>
+                                <li className="flex gap-4">
+                                    <div className="w-1 h-full min-h-[1.5em] bg-primary rounded-full" />
+                                    <div>
+                                        <strong className="block text-white">Práctica Real</strong>
+                                        Menos teoría aburrida, más tocar. Aprendemos la teoría aplicándola directamente a canciones.
+                                    </div>
+                                </li>
+                                <li className="flex gap-4">
+                                    <div className="w-1 h-full min-h-[1.5em] bg-primary rounded-full" />
+                                    <div>
+                                        <strong className="block text-white">Confianza</strong>
+                                        Un espacio seguro para equivocarse, experimentar y crecer como artista.
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </Section>
+        </>
+    );
+}

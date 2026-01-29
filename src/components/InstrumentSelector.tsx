@@ -1,0 +1,113 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import { Button } from "@/components/Button";
+import { Music2, Mic2, Piano, Guitar } from "lucide-react";
+
+export function InstrumentSelector() {
+    const [activeTab, setActiveTab] = useState("saxo");
+
+    const instruments = {
+        saxo: {
+            title: "Saxofón",
+            subtitle: "Tu Voz Melódica",
+            description: "El instrumento más expresivo y cercano a la voz humana. Aprende técnica, improvisación y estilística en Jazz, Pop y Funk.",
+            image: "/images/profesor.png",
+            icon: <Music2 className="w-5 h-5" />
+        },
+        piano: {
+            title: "Piano",
+            subtitle: "Armonía y Composición",
+            description: "La base de toda la música. Domina la lectura, los acordes y el acompañamiento desde un enfoque práctico y moderno.",
+            image: "/images/piano.png",
+            icon: <Piano className="w-5 h-5" />
+        },
+        guitar: {
+            title: "Guitarra",
+            subtitle: "Ritmo y Versatilidad",
+            description: "Desde los acordes básicos hasta los solos más complejos. Clases para guitarra acústica y eléctrica enfocadas en tu estilo favorito.",
+            image: "/images/saxo.png", // Placeholder until guitar image provided
+            icon: <Guitar className="w-5 h-5" />
+        },
+        production: {
+            title: "Producción",
+            subtitle: "Graba y Produce",
+            description: "Domina las herramientas de estudio. Aprende grabación, mezcla y masterización para llevar tus ideas al siguiente nivel.",
+            image: "/images/estudio.png",
+            icon: <Mic2 className="w-5 h-5" />
+        }
+    };
+
+    return (
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Navigation - Left Side */}
+            <div className="lg:col-span-4 space-y-4">
+                <h3 className="text-2xl font-serif text-white mb-8">Elige tu instrumento</h3>
+                <div className="flex flex-col gap-3">
+                    {Object.entries(instruments).map(([key, data]) => (
+                        <button
+                            key={key}
+                            onClick={() => setActiveTab(key)}
+                            className={`group flex items-center gap-4 p-4 rounded-xl text-left transition-all duration-300 ${activeTab === key
+                                ? "bg-zinc-800 border-l-4 border-primary shadow-lg"
+                                : "bg-zinc-900/50 border-l-4 border-transparent hover:bg-zinc-900"
+                                }`}
+                        >
+                            <div className={`p-3 rounded-lg ${activeTab === key ? "bg-primary text-black" : "bg-zinc-800 text-zinc-400 group-hover:text-white"}`}>
+                                {data.icon}
+                            </div>
+                            <div>
+                                <h4 className={`font-bold transition-colors ${activeTab === key ? "text-white" : "text-zinc-400 group-hover:text-white"}`}>
+                                    {data.title}
+                                </h4>
+                                <p className="text-xs text-zinc-500 uppercase tracking-wider">{data.subtitle}</p>
+                            </div>
+                        </button>
+                    ))}
+                </div>
+
+                <div className="mt-8 p-6 bg-zinc-900/30 border border-dashed border-zinc-800 rounded-xl text-center">
+                    <p className="text-zinc-400 text-sm mb-3">¿Buscas otro instrumento?</p>
+                    <div className="inline-flex items-center gap-2 text-primary text-sm font-bold cursor-pointer hover:underline">
+                        Escríbeme y lo organizamos <Mic2 className="w-4 h-4" />
+                    </div>
+                </div>
+            </div>
+
+            {/* Content Display - Right Side */}
+            <div className="lg:col-span-8 relative h-[500px] rounded-3xl overflow-hidden bg-zinc-950 border border-white/5 shadow-2xl">
+                {Object.entries(instruments).map(([key, data]) => (
+                    <div
+                        key={key}
+                        className={`absolute inset-0 transition-opacity duration-700 ${activeTab === key ? "opacity-100 z-10" : "opacity-0 z-0"}`}
+                    >
+                        <Image
+                            src={data.image}
+                            alt={`${data.title} - Clases de Música Alex Galindo Bogotá`}
+                            fill
+                            sizes="(max-width: 1024px) 100vw, 66vw"
+                            className="object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/80 to-transparent lg:via-zinc-950/60" />
+
+                        <div className="absolute inset-0 flex flex-col justify-center p-8 lg:p-16 max-w-lg">
+                            <span className="text-primary font-bold tracking-widest uppercase mb-4 animate-in fade-in slide-in-from-left duration-700 delay-100">Academia Musical</span>
+                            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6 animate-in fade-in slide-in-from-bottom duration-700 delay-200">
+                                {data.title}
+                            </h2>
+                            <p className="text-zinc-300 text-lg leading-relaxed mb-8 animate-in fade-in slide-in-from-bottom duration-700 delay-300">
+                                {data.description}
+                            </p>
+                            <div className="animate-in fade-in slide-in-from-bottom duration-700 delay-400">
+                                <Button className="bg-white text-black hover:bg-zinc-200">
+                                    Reservar Clase de Prueba
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+}
