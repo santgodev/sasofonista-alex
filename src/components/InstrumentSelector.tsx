@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/Button";
-import { Music2, Mic2, Piano, Guitar } from "lucide-react";
+import { Music2, Mic2 } from "lucide-react";
 
 export function InstrumentSelector() {
     const [activeTab, setActiveTab] = useState("saxo");
@@ -15,27 +15,6 @@ export function InstrumentSelector() {
             description: "El instrumento más expresivo y cercano a la voz humana. Aprende técnica, improvisación y estilística en Jazz, Pop y Funk.",
             image: "/images/profesor.png",
             icon: <Music2 className="w-5 h-5" />
-        },
-        piano: {
-            title: "Piano",
-            subtitle: "Armonía y Composición",
-            description: "La base de toda la música. Domina la lectura, los acordes y el acompañamiento desde un enfoque práctico y moderno.",
-            image: "/images/piano.png",
-            icon: <Piano className="w-5 h-5" />
-        },
-        guitar: {
-            title: "Guitarra",
-            subtitle: "Ritmo y Versatilidad",
-            description: "Desde los acordes básicos hasta los solos más complejos. Clases para guitarra acústica y eléctrica enfocadas en tu estilo favorito.",
-            image: "/images/saxo.png", // Placeholder until guitar image provided
-            icon: <Guitar className="w-5 h-5" />
-        },
-        production: {
-            title: "Producción",
-            subtitle: "Graba y Produce",
-            description: "Domina las herramientas de estudio. Aprende grabación, mezcla y masterización para llevar tus ideas al siguiente nivel.",
-            image: "/images/estudio.png",
-            icon: <Mic2 className="w-5 h-5" />
         }
     };
 
@@ -54,21 +33,21 @@ export function InstrumentSelector() {
                                 : "bg-zinc-900/50 border-l-4 border-transparent hover:bg-zinc-900"
                                 }`}
                         >
-                            <div className={`p-3 rounded-lg ${activeTab === key ? "bg-primary text-black" : "bg-zinc-800 text-zinc-400 group-hover:text-white"}`}>
+                            <div className={`p-3 rounded-lg ${activeTab === key ? "bg-primary text-black" : "bg-zinc-800 text-zinc-300 group-hover:text-white"}`}>
                                 {data.icon}
                             </div>
                             <div>
-                                <h4 className={`font-bold transition-colors ${activeTab === key ? "text-white" : "text-zinc-400 group-hover:text-white"}`}>
+                                <h4 className={`font-bold transition-colors ${activeTab === key ? "text-white" : "text-zinc-300 group-hover:text-white"}`}>
                                     {data.title}
                                 </h4>
-                                <p className="text-xs text-zinc-500 uppercase tracking-wider">{data.subtitle}</p>
+                                <p className="text-xs text-zinc-400 uppercase tracking-wider">{data.subtitle}</p>
                             </div>
                         </button>
                     ))}
                 </div>
 
                 <div className="mt-8 p-6 bg-zinc-900/30 border border-dashed border-zinc-800 rounded-xl text-center">
-                    <p className="text-zinc-400 text-sm mb-3">¿Buscas otro instrumento?</p>
+                    <p className="text-zinc-300 text-sm mb-3">¿Buscas otro instrumento?</p>
                     <div className="inline-flex items-center gap-2 text-primary text-sm font-bold cursor-pointer hover:underline">
                         Escríbeme y lo organizamos <Mic2 className="w-4 h-4" />
                     </div>

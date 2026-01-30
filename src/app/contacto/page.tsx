@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/Button";
 import { Mail, Phone, MapPin, MessageSquare, Loader2 } from "lucide-react";
+import { sendEmail } from "@/lib/email";
 
 export default function ContactoPage() {
     const [formData, setFormData] = useState({
@@ -27,31 +28,22 @@ export default function ContactoPage() {
         setResponseMessage("");
 
         try {
-            const res = await fetch('/api/contact', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
+            await sendEmail({
+                to_name: "Alex", // El destinatario eres tú
+                to_email: "tucorreo@ejemplo.com", // Tu correo (configurado en EmailJS pero bueno pasarlo por si acaso)
+                message: formData.message,
+                date: `${formData.date} ${formData.time}`,
+                subject: formData.subject,
             });
 
-            const data = await res.json();
-
-            if (!res.ok) {
-                throw new Error(data.error || 'Error al enviar');
-            }
-
             setStatus('success');
-            setResponseMessage(data.message);
-
-            // Should we reset form? Maybe not date if they want to try another?
-            // If success (confirmed or busy-but-sent), we might want to clear sensitive fields?
-            if (data.status === 'confirmed') {
-                setFormData({ name: "", email: "", subject: "Interés en Clases", message: "", date: "", time: "" });
-            }
+            setResponseMessage("¡Mensaje enviado! Me pondré en contacto contigo pronto.");
+            setFormData({ name: "", email: "", subject: "Interés en Clases", message: "", date: "", time: "" });
 
         } catch (error) {
             console.error(error);
             setStatus('error');
-            setResponseMessage("Hubo un error al procesar tu solicitud. Por favor intenta de nuevo o escríbeme directo.");
+            setResponseMessage("Hubo un error al enviar. Por favor intenta de nuevo o escríbeme por WhatsApp.");
         }
     };
 

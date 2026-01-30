@@ -4,6 +4,8 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
+export const dynamic = "force-static";
+
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
@@ -62,6 +64,9 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "/",
+  },
+  icons: {
+    icon: "/favicon.ico",
   },
 };
 

@@ -28,11 +28,11 @@ export default function Home() {
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center h-full justify-center pt-20">
           <div className="space-y-6 max-w-4xl mx-auto">
             <div className="inline-block px-3 py-1 border border-white/20 rounded-full bg-white/5 backdrop-blur-md mb-4 animate-in fade-in slide-in-from-top-8 duration-1000">
-              <span className="text-zinc-300 text-sm tracking-[0.2em] font-medium uppercase">Experience Excellence</span>
+              <span className="text-zinc-200 text-sm tracking-[0.2em] font-medium uppercase">Experience Excellence</span>
             </div>
 
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white tracking-tight leading-none animate-in fade-in scale-95 duration-1000 delay-200">
-              <span className="block text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-zinc-500">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-zinc-400">
                 Elegancia
               </span>
               <span className="block text-primary italic font-light mt-2">
@@ -40,7 +40,7 @@ export default function Home() {
               </span>
             </h1>
 
-            <p className="text-lg md:text-2xl text-zinc-300 max-w-2xl mx-auto font-light leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500">
+            <p className="text-lg md:text-2xl text-zinc-200 max-w-2xl mx-auto font-light leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500">
               Saxofonista internacional especializado en crear atmósferas sonoras inolvidables para eventos de alto nivel.
             </p>
 
@@ -52,7 +52,7 @@ export default function Home() {
               >
                 Verificar Disponibilidad
               </Button>
-              <span className="text-zinc-500 text-sm hidden sm:block">o</span>
+              <span className="text-zinc-400 text-sm hidden sm:block">o</span>
               <Link href="/clases">
                 <Button variant="outline" size="lg" className="min-w-[220px] h-14 text-lg border-white/20 text-white hover:bg-white/10">
                   Academia Musical
@@ -61,7 +61,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce duration-[2000ms] text-zinc-500">
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce duration-[2000ms] text-zinc-400">
             <ArrowDown className="w-6 h-6 opacity-50" />
           </div>
         </div>
@@ -77,17 +77,17 @@ export default function Home() {
             </div>
             <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-zinc-900 p-6 rounded-xl border border-zinc-800 shadow-xl hidden md:block">
               <div className="h-full flex flex-col justify-center items-center text-center">
-                <span className="text-4xl font-serif font-bold text-primary mb-1">10+</span>
-                <span className="text-sm text-zinc-400 uppercase tracking-widest text-[10px]">Años de<br />Trayectoria</span>
+                <span className="text-4xl font-serif font-bold text-primary mb-1">30+</span>
+                <span className="text-sm text-zinc-300 uppercase tracking-widest text-[10px]">Años de<br />Trayectoria</span>
               </div>
             </div>
           </div>
 
           <div className="md:col-span-7 space-y-8">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white leading-tight">
-              No es solo música,<br /> es <span className="text-zinc-500 italic">Arquitectura Emocional</span>.
+              No es solo música,<br /> es <span className="text-zinc-300 italic">Arquitectura Emocional</span>.
             </h2>
-            <div className="space-y-6 text-lg text-zinc-400 font-light leading-relaxed max-w-2xl">
+            <div className="space-y-6 text-lg text-zinc-300 font-light leading-relaxed max-w-2xl">
               <p>
                 Creo firmemente que el saxofón es una extensión de la voz humana. Mi misión no es simplemente "tocar canciones", sino diseñar el paisaje sonoro perfecto para cada momento.
               </p>
@@ -104,7 +104,7 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <div className="text-sm text-zinc-400">
+              <div className="text-sm text-zinc-300">
                 <div className="flex text-primary mb-1">★★★★★</div>
                 <span className="font-bold text-white">500+</span> Eventos realizados
               </div>
@@ -118,7 +118,7 @@ export default function Home() {
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <span className="text-primary text-xs font-bold tracking-[0.3em] uppercase mb-4 block">Servicios Exclusivos</span>
           <h2 className="text-4xl md:text-5xl font-serif text-white mb-6">Diseñado para cada ocasión</h2>
-          <p className="text-zinc-300 text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-zinc-200 text-lg max-w-2xl mx-auto leading-relaxed">
             Cada evento tiene su propia personalidad. Adapto mi repertorio y mi puesta en escena para mimetizarme con tu visión.
           </p>
         </div>
@@ -150,7 +150,7 @@ export default function Home() {
           <h2 className="text-4xl md:text-6xl font-serif font-bold text-zinc-950 mb-8 leading-tight">
             ¿Listo para elevar tu evento?
           </h2>
-          <p className="text-xl text-zinc-900/80 mb-10 max-w-2xl mx-auto font-medium">
+          <p className="text-xl text-zinc-950/90 mb-10 max-w-2xl mx-auto font-medium">
             Las fechas para la temporada 2025 se están cerrando. Consulta disponibilidad hoy mismo y asegúrate de tener la mejor música en tu día especial.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -172,7 +172,7 @@ export default function Home() {
           <div className="text-2xl font-serif font-bold text-white">
             SAXOFONISTA<span className="text-primary">ALEX</span>
           </div>
-          <div className="flex gap-8 text-sm text-zinc-500 font-medium tracking-widest uppercase">
+          <div className="flex gap-8 text-sm text-zinc-300 font-medium tracking-widest uppercase">
             <Link href="/eventos" className="hover:text-white transition-colors">Eventos</Link>
             <Link href="/clases" className="hover:text-white transition-colors">Academia</Link>
             <Link href="/about" className="hover:text-white transition-colors">Bio</Link>
@@ -187,7 +187,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="max-w-7xl mx-auto px-4 mt-8 pt-8 border-t border-zinc-900 text-center md:text-left text-xs text-zinc-700">
+        <div className="max-w-7xl mx-auto px-4 mt-8 pt-8 border-t border-zinc-900 text-center md:text-left text-xs text-zinc-400">
           © 2025 Alex Saxofonista. Todos los derechos reservados. Diseño Premium.
         </div>
       </footer>

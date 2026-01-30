@@ -3,6 +3,7 @@
 import { Button } from "@/components/Button";
 import { X, Calendar, CheckCircle2 } from "lucide-react";
 import { useState, useEffect } from "react";
+import { sendEmail } from "@/lib/email";
 
 interface LeadCaptureModalProps {
     isOpen: boolean;
@@ -36,10 +37,22 @@ export function LeadCaptureModal({ isOpen, onClose, defaultEventType = "" }: Lea
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
-        // Simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        setStep(2); // Success step
-        setIsSubmitting(false);
+
+        try {
+            await sendEmail({
+                to_name: "Alex",
+                to_email: "tucorreo@ejemplo.com",
+                message: `Detalles: ${formData.details}\nTeléfono: ${formData.phone}`,
+                date: formData.date,
+                subject: `Verificar Disponibilidad: ${formData.eventType} - ${formData.name}`,
+            });
+            setStep(2); // Success step
+        } catch (error) {
+            console.error("Error sending lead:", error);
+            alert("Hubo un error al enviar. Por favor intenta de nuevo.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (

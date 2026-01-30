@@ -58,7 +58,7 @@ export function EventCatalog() {
                         <h3 className="text-2xl font-serif font-bold text-white mb-2 leading-tight">
                             {event.title}
                         </h3>
-                        <p className="text-zinc-300 text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200 line-clamp-3">
+                        <p className="text-zinc-200 text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200 line-clamp-3">
                             {event.description}
                         </p>
                         <div className="flex items-center gap-2 text-primary text-sm font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300">
