@@ -5,14 +5,11 @@ import Image from "next/image";
 import { useState } from "react";
 import { Button } from "@/components/Button";
 import { Section } from "@/components/Section";
-import { HeroCinematic } from "@/components/HeroCinematic";
 import { HeroImageSequence } from "@/components/HeroImageSequence";
 import { EventCatalog } from "@/components/EventCatalog";
 import { InstrumentSelector } from "@/components/InstrumentSelector";
 import { LeadCaptureModal } from "@/components/LeadCaptureModal";
 import { Star, ArrowDown, MapPin, Mail, Phone } from "lucide-react";
-
-const USE_VIDEO_HERO = false; // Set to false to use the requested Image Sequence Hero
 
 export default function Home() {
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
@@ -23,7 +20,7 @@ export default function Home() {
 
       {/* Hero Section - Cinematic */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
-        {USE_VIDEO_HERO ? <HeroCinematic /> : <HeroImageSequence />}
+        <HeroImageSequence />
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center h-full justify-center pt-20">
           <div className="space-y-6 max-w-4xl mx-auto">
@@ -72,7 +69,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-center">
           <div className="md:col-span-5 relative">
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden transition-all duration-700">
-              <Image src="/images/saxo.png" alt="Saxofonista Alex Galindo Bogotá Colombia" fill className="object-cover object-top" />
+              <Image src="/images/saxo.webp" alt="Saxofonista Alex Galindo Bogotá Colombia" fill className="object-cover object-top" />
               <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl" />
             </div>
             <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-zinc-900 p-6 rounded-xl border border-zinc-800 shadow-xl hidden md:block">

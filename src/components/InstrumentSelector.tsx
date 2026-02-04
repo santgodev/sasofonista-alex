@@ -13,10 +13,13 @@ export function InstrumentSelector() {
             title: "Saxofón",
             subtitle: "Tu Voz Melódica",
             description: "El instrumento más expresivo y cercano a la voz humana. Aprende técnica, improvisación y estilística en Jazz, Pop y Funk.",
-            image: "/images/profesor.png",
-            icon: <Music2 className="w-5 h-5" />
+            image: "/iloveimg-converted/portada_clases.jpg",
+            icon: <Music2 className="w-5 h-5" />,
+            imagePosition: "center 12%"
         }
     };
+
+    // ... (rest is same until render) ...
 
     return (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -67,6 +70,7 @@ export function InstrumentSelector() {
                             fill
                             sizes="(max-width: 1024px) 100vw, 66vw"
                             className="object-cover"
+                            style={{ objectPosition: (data as any).imagePosition || 'center' }}
                         />
                         <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/80 to-transparent lg:via-zinc-950/60" />
 

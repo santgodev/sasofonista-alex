@@ -9,20 +9,28 @@ import Image from "next/image";
 export default function ClasesPage() {
     return (
         <>
-            <section className="relative py-24 bg-zinc-900 border-b border-white/5 overflow-hidden">
+            <section className="relative py-24 bg-zinc-900 border-b border-white/5 overflow-hidden min-h-[60vh] flex items-center justify-center">
+                {/* Background Image */}
+                <div className="absolute inset-0 z-0">
+                    <Image
+                        src="/iloveimg-converted/portada_clases.jpg"
+                        alt="Clases de Música Alex Galindo"
+                        fill
+                        className="object-cover opacity-40"
+                        priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-zinc-950/30" />
+                </div>
+
                 <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
                     <span className="text-primary font-bold tracking-wider uppercase text-sm mb-4 block">Academia de Música</span>
                     <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">
                         Descubre Tu Propia Voz
                     </h1>
-                    <p className="text-xl text-zinc-400 max-w-2xl mx-auto">
+                    <p className="text-xl text-zinc-300 max-w-2xl mx-auto">
                         Clases personalizadas diseñadas para desbloquear tu potencial musical, sin importar tu nivel actual.
                     </p>
                 </div>
-
-                {/* Decorative elements */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-                <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
             </section>
 
             <Section>
@@ -41,7 +49,7 @@ export default function ClasesPage() {
                     <div>
                         <div className="relative w-full h-[500px] rounded-2xl overflow-hidden">
                             <Image
-                                src="/images/profesor.png"
+                                src="/iloveimg-converted/portada_clases.jpg"
                                 alt="Profesor Alex en clase"
                                 fill
                                 className="object-cover"

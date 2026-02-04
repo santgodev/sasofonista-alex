@@ -7,7 +7,7 @@ export const EVENTS: Event[] = [
         title: "Bodas y Ceremonias",
         description: "Música elegante y emotiva para tu día especial. Desde la entrada hasta el cóctel.",
         priceRange: "Desde $300",
-        image: "/images/soprano_saxophone.jpg",
+        image: "/iloveimg-converted/bodas.jpg",
         features: [
             "Repertorio personalizado",
             "Equipo de sonido propio",
@@ -20,7 +20,7 @@ export const EVENTS: Event[] = [
         title: "Cócteles y Cenas",
         description: "Ambiente sofisticado con Jazz, Bossa Nova y Pop suave.",
         priceRange: "Desde $250",
-        image: "/images/saxofonista.png",
+        image: "/iloveimg-converted/saxo_venta_2.jpg",
         features: [
             "Música de fondo ideal",
             "Adaptable al ambiente",

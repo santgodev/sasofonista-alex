@@ -13,7 +13,7 @@ export default function AboutPage() {
             <section className="relative h-[60vh] flex items-center justify-center overflow-hidden bg-zinc-950">
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src="/images/saxo.png"
+                        src="/images/saxo.webp"
                         alt="Alex Galindo Saxofonista"
                         fill
                         className="object-cover opacity-40 blur-sm"
@@ -61,7 +61,7 @@ export default function AboutPage() {
 
                     <div className="order-1 md:order-2 relative aspect-[3/4] rounded-2xl overflow-hidden border border-white/10">
                         <Image
-                            src="/images/profesor.png"
+                            src="/images/profesor.webp"
                             alt="Alex Galindo en presentación"
                             fill
                             className="object-cover"
