@@ -36,7 +36,7 @@ export function InstrumentSelector() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Navigation - Left Side */}
             <div className="lg:col-span-4 space-y-4">
-                <h3 className="text-2xl font-serif text-white mb-8">Elige tu instrumento</h3>
+                <h3 className="text-xl md:text-2xl font-serif text-white mb-6 md:mb-8 text-center lg:text-left">Elige tu instrumento</h3>
                 <div className="flex flex-col gap-3">
                     {Object.entries(instruments).map(([key, data]) => (
                         <button
@@ -50,11 +50,11 @@ export function InstrumentSelector() {
                             <div className={`p-3 rounded-lg ${activeTab === key ? "bg-primary text-black" : "bg-zinc-800 text-zinc-300 group-hover:text-white"}`}>
                                 {data.icon}
                             </div>
-                            <div>
+                            <div className="flex-1">
                                 <h4 className={`font-bold transition-colors ${activeTab === key ? "text-white" : "text-zinc-300 group-hover:text-white"}`}>
                                     {data.title}
                                 </h4>
-                                <p className="text-xs text-zinc-400 uppercase tracking-wider">{data.subtitle}</p>
+                                <p className="text-[10px] sm:text-xs text-zinc-400 uppercase tracking-wider">{data.subtitle}</p>
                             </div>
                         </button>
                     ))}
@@ -69,7 +69,7 @@ export function InstrumentSelector() {
             </div>
 
             {/* Content Display - Right Side */}
-            <div className="lg:col-span-8 relative h-[500px] rounded-3xl overflow-hidden bg-zinc-950 border border-white/5 shadow-2xl">
+            <div className="lg:col-span-8 relative min-h-[450px] md:h-[500px] rounded-3xl overflow-hidden bg-zinc-950 border border-white/5 shadow-2xl mt-4 lg:mt-0">
                 {Object.entries(instruments).map(([key, data]) => (
                     <div
                         key={key}
@@ -83,19 +83,19 @@ export function InstrumentSelector() {
                             className="object-cover"
                             style={{ objectPosition: data.imagePosition || 'center' }}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/80 to-transparent lg:via-zinc-950/60" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/70 to-zinc-950/20 lg:bg-gradient-to-r lg:from-zinc-950 lg:via-zinc-950/80 lg:to-transparent" />
 
-                        <div className="absolute inset-0 flex flex-col justify-center p-8 lg:p-16 max-w-lg">
-                            <span className="text-primary font-bold tracking-widest uppercase mb-4 animate-in fade-in slide-in-from-left duration-700 delay-100">Academia Musical</span>
-                            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6 animate-in fade-in slide-in-from-bottom duration-700 delay-200">
+                        <div className="absolute inset-0 flex flex-col justify-end lg:justify-center p-6 sm:p-8 lg:p-16 max-w-lg">
+                            <span className="text-primary text-xs sm:text-sm font-bold tracking-widest uppercase mb-3 sm:mb-4 animate-in fade-in slide-in-from-left duration-700 delay-100">Academia Musical</span>
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white mb-4 sm:mb-6 animate-in fade-in slide-in-from-bottom duration-700 delay-200">
                                 {data.title}
                             </h2>
-                            <p className="text-zinc-300 text-lg leading-relaxed mb-8 animate-in fade-in slide-in-from-bottom duration-700 delay-300">
+                            <p className="text-zinc-300 text-sm sm:text-lg leading-relaxed mb-6 sm:mb-8 animate-in fade-in slide-in-from-bottom duration-700 delay-300">
                                 {data.description}
                             </p>
-                            <div className="animate-in fade-in slide-in-from-bottom duration-700 delay-400">
-                                <Link href={getWhatsAppLink(WHATSAPP_MESSAGES.academy)} target="_blank">
-                                    <Button as="div" className="bg-white text-black hover:bg-zinc-200">
+                            <div className="animate-in fade-in slide-in-from-bottom duration-700 delay-400 mb-2 lg:mb-0">
+                                <Link href={getWhatsAppLink(WHATSAPP_MESSAGES.academy)} target="_blank" className="block sm:inline-block">
+                                    <Button as="div" className="w-full sm:w-auto bg-white text-black hover:bg-zinc-200 py-4">
                                         Quiero mi Clase de Prueba
                                     </Button>
                                 </Link>

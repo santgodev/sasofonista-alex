@@ -62,7 +62,7 @@ export const EVENTS: Event[] = [
         id: "cumpleanos",
         title: "Cumpleaños y Grados",
         description: "Eleva tu celebración con la energía del saxo en vivo. Pop, House, y éxitos actuales.",
-        image: "/iloveimg-converted/saxo_venta.jpg",
+        image: "/iloveimg-converted/portada_cumpleaños.jpg",
         features: [
             "Fiesta y Energía",
             "Show en Vivo",

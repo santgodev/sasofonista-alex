@@ -9,17 +9,17 @@ export function Footer() {
     return (
         <footer className="bg-zinc-900 border-t border-white/10 pt-16 pb-8">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12 text-center md:text-left">
                     {/* Brand */}
-                    <div className="col-span-1 md:col-span-2">
-                        <Link href="/" className="text-2xl font-serif font-bold text-white mb-4 block">
+                    <div className="col-span-1 md:col-span-2 flex flex-col items-center md:items-start">
+                        <Link href="/" className="text-2xl font-serif font-bold italic text-white mb-4 block">
                             Alex Galindo
                         </Link>
                         <p className="text-zinc-400 max-w-sm mb-6">
                             Música profesional para eventos inolvidables y enseñanza musical personalizada.
                             Lleva tu evento al siguiente nivel.
                         </p>
-                        <div className="flex gap-4">
+                        <div className="flex gap-4 justify-center md:justify-start">
                             <SocialLink href="https://www.instagram.com/saxofonistaalexgalindo/" icon={Instagram} label="Instagram Alex Galindo" />
                             <SocialLink href="#" icon={Youtube} label="YouTube" />
                             <SocialLink href="mailto:info@alexsax.com" icon={Mail} label="Email" />
@@ -40,7 +40,7 @@ export function Footer() {
                     {/* Contact */}
                     <div>
                         <h3 className="font-serif font-bold text-white mb-4">Contacto</h3>
-                        <ul className="space-y-3">
+                        <ul className="space-y-3 flex flex-col items-center md:items-start">
                             <li className="flex items-center gap-2 text-zinc-400">
                                 <Mail className="w-4 h-4" />
                                 info@alexsax.com

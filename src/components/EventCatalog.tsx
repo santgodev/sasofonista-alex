@@ -44,7 +44,7 @@ export function EventCatalog() {
         {
             title: "Cumpleaños y Grados",
             description: "Eleva tu celebración con la energía del saxo en vivo. Pop, House, y éxitos actuales.",
-            image: "/iloveimg-converted/saxo_venta.jpg",
+            image: "/iloveimg-converted/portada_cumpleaños.jpg",
             tags: ["Fiesta", "Grados", "Rooftops"],
             imagePosition: "center center",
             messageKey: WHATSAPP_MESSAGES.birthday
@@ -161,36 +161,36 @@ export function EventCatalog() {
                             }}
                         >
                             {/* Inner Card handles the visual separation */}
-                            <div className="relative w-full h-full overflow-hidden rounded-2xl cursor-pointer group/card">
+                            <div className="relative w-full h-full overflow-hidden rounded-2xl cursor-pointer group/card border border-white/5">
                                 <Image
                                     src={event.image}
                                     alt={`${event.title} - Saxofonista Alex Galindo Bogotá`}
                                     fill
                                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                                     quality={90}
-                                    className="object-cover transition-transform duration-700 hover:scale-110"
+                                    className="object-cover transition-transform duration-700 md:group-hover/card:scale-110"
                                     style={{ objectPosition: event.imagePosition || 'center' }}
-                                    draggable={false} // Prevent image drag interfering with swipe
+                                    draggable={false}
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 hover:opacity-90 transition-opacity" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-90 md:opacity-80 md:group-hover/card:opacity-90 transition-opacity" />
 
-                                <div className="absolute inset-x-0 bottom-0 p-6 translate-y-4 hover:translate-y-0 transition-transform duration-500">
-                                    <div className="flex flex-wrap gap-2 mb-3 opacity-0 hover:opacity-100 transition-opacity duration-500 delay-100">
+                                <div className="absolute inset-x-0 bottom-0 p-5 md:p-6 md:translate-y-4 md:group-hover/card:translate-y-0 transition-transform duration-500">
+                                    <div className="flex flex-wrap gap-2 mb-3 opacity-100 md:opacity-0 md:group-hover/card:opacity-100 transition-opacity duration-500 delay-100">
                                         {event.tags.map((tag, tIdx) => (
                                             <span key={tIdx} className="text-[10px] uppercase tracking-wider font-bold px-2 py-1 bg-white/20 backdrop-blur-md rounded text-white border border-white/10">
                                                 {tag}
                                             </span>
                                         ))}
                                     </div>
-                                    <h3 className="text-2xl font-serif font-bold text-white mb-2 leading-tight">
+                                    <h3 className="text-xl md:text-2xl font-serif font-bold text-white mb-2 leading-tight">
                                         {event.title}
                                     </h3>
-                                    <p className="text-zinc-200 text-sm mb-4 opacity-0 hover:opacity-100 transition-opacity duration-500 delay-200 line-clamp-3">
+                                    <p className="text-zinc-200 text-xs md:text-sm mb-4 opacity-100 md:opacity-0 md:group-hover/card:opacity-100 transition-opacity duration-500 delay-200 line-clamp-3 md:line-clamp-none">
                                         {event.description}
                                     </p>
-                                    <div className="flex items-center gap-2 text-primary text-sm font-bold uppercase tracking-widest opacity-0 hover:opacity-100 transition-opacity duration-500 delay-300">
+                                    <div className="flex items-center gap-2 text-primary text-sm font-bold uppercase tracking-widest opacity-100 md:opacity-0 md:group-hover/card:opacity-100 transition-opacity duration-500 delay-300">
                                         <Link href={getWhatsAppLink(event.messageKey)} target="_blank" className="flex items-center gap-2 hover:underline">
-                                            Cotizar en WhatsApp <ArrowUpRight className="w-4 h-4" />
+                                            Cotizar <ArrowUpRight className="w-4 h-4" />
                                         </Link>
                                     </div>
                                 </div>

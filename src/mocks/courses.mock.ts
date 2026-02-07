@@ -26,7 +26,7 @@ export const COURSES: Course[] = [
         instrument: "Saxofón",
         level: "Avanzado",
         description: "Domina el altísimo, la técnica extendida y encuentra tu propio estilo musical profesional.",
-        image: "/iloveimg-converted/saxo_venta.jpg", // Using an existing sax image
+        image: "/iloveimg-converted/portada_cumpleaños.jpg", // Using updated high-quality asset
         features: ["Técnica Extendida", "Lenguaje de Jazz", "Preparación Profesional"]
     }
 ];
