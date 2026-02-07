@@ -5,6 +5,7 @@ import { Section } from "@/components/Section";
 import { Button } from "@/components/Button";
 import Link from "next/link";
 import { Star } from "lucide-react";
+import { getWhatsAppLink, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
 
 export default function AboutPage() {
     return (
@@ -13,7 +14,7 @@ export default function AboutPage() {
             <section className="relative h-[60vh] flex items-center justify-center overflow-hidden bg-zinc-950">
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src="/images/saxo.webp"
+                        src="/iloveimg-converted/bio.jpg"
                         alt="Alex Galindo Saxofonista"
                         fill
                         className="object-cover opacity-40 blur-sm"
@@ -46,12 +47,15 @@ export default function AboutPage() {
                                 Desde mis inicios en la formación clásica hasta mi evolución hacia el Jazz, el Pop y los ritmos electrónicos, he buscado siempre la elegancia en la interpretación. No se trata solo de tocar notas, sino de dialogar con el entorno y las emociones de los asistentes.
                             </p>
                             <p>
+                                Como cristiano, entiendo mi talento como un don para servir. Esta convicción no solo guía mi ética profesional y compromiso, sino que impregna cada nota con un propósito mayor: transmitir paz, alegría y excelencia a quienes me escuchan.
+                            </p>
+                            <p>
                                 He tenido el privilegio de acompañar cientos de historias de amor, éxitos corporativos y celebraciones íntimas, aportando siempre un sello de distinción y profesionalismo que va más allá de la música misma.
                             </p>
                         </div>
 
                         <div className="pt-8">
-                            <Link href="/contacto">
+                            <Link href={getWhatsAppLink(WHATSAPP_MESSAGES.general)} target="_blank">
                                 <Button className="bg-white text-black hover:bg-zinc-200 px-8 h-12">
                                     Hablemos de tu Evento
                                 </Button>
@@ -59,13 +63,35 @@ export default function AboutPage() {
                         </div>
                     </div>
 
-                    <div className="order-1 md:order-2 relative aspect-[3/4] rounded-2xl overflow-hidden border border-white/10">
-                        <Image
-                            src="/images/profesor.webp"
-                            alt="Alex Galindo en presentación"
-                            fill
-                            className="object-cover"
-                        />
+                    <div className="order-1 md:order-2 grid grid-cols-2 gap-4 md:gap-6">
+                        <div className="space-y-4 md:space-y-6">
+                            <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                                <Image
+                                    src="/iloveimg-converted/bio2.jpg"
+                                    alt="Alex Galindo Saxofonista Bio 2"
+                                    fill
+                                    className="object-cover hover:scale-105 transition-transform duration-700"
+                                />
+                            </div>
+                            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                                <Image
+                                    src="/iloveimg-converted/bio4.jpg"
+                                    alt="Alex Galindo Saxofonista Bio 4"
+                                    fill
+                                    className="object-cover hover:scale-105 transition-transform duration-700"
+                                />
+                            </div>
+                        </div>
+                        <div className="space-y-4 md:space-y-6 pt-8 md:pt-16">
+                            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                                <Image
+                                    src="/iloveimg-converted/bio3.jpg"
+                                    alt="Alex Galindo Saxofonista Bio 3"
+                                    fill
+                                    className="object-cover hover:scale-105 transition-transform duration-700"
+                                />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </Section>

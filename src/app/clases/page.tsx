@@ -9,17 +9,18 @@ import Image from "next/image";
 export default function ClasesPage() {
     return (
         <>
-            <section className="relative py-24 bg-zinc-900 border-b border-white/5 overflow-hidden min-h-[60vh] flex items-center justify-center">
+            <section className="relative py-24 bg-zinc-900 border-b border-white/5 overflow-hidden min-h-[75vh] flex items-center justify-center">
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src="/iloveimg-converted/portada_clases.jpg"
-                        alt="Clases de Música Alex Galindo"
+                        src="/iloveimg-converted/saxo_venta_3.jpg"
+                        alt="Clases de Saxofón Alex Galindo"
                         fill
-                        className="object-cover opacity-40"
+                        className="object-cover opacity-60"
+                        style={{ objectPosition: 'center 15%' }}
                         priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-zinc-950/30" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-transparent" />
                 </div>
 
                 <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
@@ -53,6 +54,7 @@ export default function ClasesPage() {
                                 alt="Profesor Alex en clase"
                                 fill
                                 className="object-cover"
+                                style={{ objectPosition: "center top" }}
                             />
                         </div>
                     </div>

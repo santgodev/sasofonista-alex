@@ -1,6 +1,7 @@
 
 import { Button } from "@/components/Button";
 import Link from "next/link";
+import { getWhatsAppLink, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
 
 export function BookingCTA() {
     return (
@@ -12,13 +13,8 @@ export function BookingCTA() {
                 Asegura la fecha para tu boda o evento privado. La agenda suele llenarse con meses de antelación.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link href="/contacto">
-                    <Button size="lg" className="w-full sm:w-auto">
-                        Consultar Disponibilidad
-                    </Button>
-                </Link>
-                <Link href="/contacto">
-                    <Button variant="outline" size="lg" className="w-full sm:w-auto">
+                <Link href={getWhatsAppLink(WHATSAPP_MESSAGES.general)} target="_blank">
+                    <Button as="div" variant="outline" size="lg" className="w-full sm:w-auto">
                         Hablemos por WhatsApp
                     </Button>
                 </Link>

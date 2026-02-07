@@ -1,7 +1,8 @@
 
 import { Button } from "@/components/Button";
-import Link from "next/link";
 import { Mail } from "lucide-react";
+import { getWhatsAppLink, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
+import Link from "next/link";
 
 export function InquiryCTA() {
     return (
@@ -12,10 +13,10 @@ export function InquiryCTA() {
             <p className="text-zinc-400 mb-8">
                 Escríbeme para una evaluación gratuita y te orientaré sobre el mejor camino para ti.
             </p>
-            <Link href="/contacto">
-                <Button variant="outline" className="gap-2">
+            <Link href={getWhatsAppLink(WHATSAPP_MESSAGES.academy)} target="_blank">
+                <Button as="div" variant="outline" className="gap-2 hover:bg-primary hover:text-black hover:border-primary transition-all">
                     <Mail className="w-4 h-4" />
-                    Contactar Profesor
+                    Agendar Evaluación Gratuita
                 </Button>
             </Link>
         </div>

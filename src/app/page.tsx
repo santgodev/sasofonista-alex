@@ -2,22 +2,19 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
 import { Button } from "@/components/Button";
 import { Section } from "@/components/Section";
 import { HeroImageSequence } from "@/components/HeroImageSequence";
 import { EventCatalog } from "@/components/EventCatalog";
 import { InstrumentSelector } from "@/components/InstrumentSelector";
-import { LeadCaptureModal } from "@/components/LeadCaptureModal";
-import { Star, ArrowDown, MapPin, Mail, Phone } from "lucide-react";
+import { ArrowDown } from "lucide-react";
+import { getWhatsAppLink, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
 
 export default function Home() {
-  const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
+  const whatsappHeroLink = getWhatsAppLink(WHATSAPP_MESSAGES.hero);
 
   return (
     <>
-      <LeadCaptureModal isOpen={isLeadModalOpen} onClose={() => setIsLeadModalOpen(false)} />
-
       {/* Hero Section - Cinematic */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
         <HeroImageSequence />
@@ -42,17 +39,19 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-5 pt-8 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-700">
-              <Button
-                size="lg"
-                className="min-w-[220px] h-14 text-lg bg-primary hover:bg-primary/90 text-black font-bold tracking-wide"
-                onClick={() => setIsLeadModalOpen(true)}
-              >
-                Verificar Disponibilidad
-              </Button>
+              <Link href={whatsappHeroLink} target="_blank">
+                <Button
+                  as="div"
+                  size="lg"
+                  className="min-w-[220px] h-14 text-lg bg-primary hover:bg-primary/90 text-black font-bold tracking-wide"
+                >
+                  Cotizar Show en Vivo
+                </Button>
+              </Link>
               <span className="text-zinc-400 text-sm hidden sm:block">o</span>
-              <Link href="/clases">
-                <Button variant="outline" size="lg" className="min-w-[220px] h-14 text-lg border-white/20 text-white hover:bg-white/10">
-                  Academia Musical
+              <Link href="#academia">
+                <Button as="div" variant="outline" size="lg" className="min-w-[220px] h-14 text-lg border-white/20 text-white hover:bg-white/10">
+                  Ver Academia
                 </Button>
               </Link>
             </div>
@@ -86,7 +85,7 @@ export default function Home() {
             </h2>
             <div className="space-y-6 text-lg text-zinc-300 font-light leading-relaxed max-w-2xl">
               <p>
-                Creo firmemente que el saxofón es una extensión de la voz humana. Mi misión no es simplemente "tocar canciones", sino diseñar el paisaje sonoro perfecto para cada momento.
+                Creo firmemente que el saxofón es una extensión de la voz humana. Mi misión no es simplemente &quot;tocar canciones&quot;, sino diseñar el paisaje sonoro perfecto para cada momento.
               </p>
               <p>
                 Desde el silencio expectante de una ceremonia hasta la euforia de una fiesta privada, mi enfoque combina la elegancia del Jazz clásico con la energía de los ritmos modernos, siempre con una estética visual impecable.
@@ -120,17 +119,11 @@ export default function Home() {
           </p>
         </div>
         <EventCatalog />
-        <div className="mt-12 text-center">
-          <Link href="/contacto">
-            <Button variant="outline" className="border-zinc-700 hover:bg-white hover:text-black hover:border-white transition-all px-8">
-              Descargar Dossier Completo
-            </Button>
-          </Link>
-        </div>
+
       </Section>
 
       {/* Academy - Instrument Selector */}
-      <Section className="bg-zinc-950 py-24">
+      <Section className="bg-zinc-950 py-24" id="academia">
         <div className="mb-16">
           <span className="text-primary text-xs font-bold tracking-[0.3em] uppercase mb-4 block">Mentoria & Educación</span>
           <h2 className="text-4xl md:text-5xl font-serif text-white max-w-2xl">
@@ -148,11 +141,11 @@ export default function Home() {
             ¿Listo para elevar tu evento?
           </h2>
           <p className="text-xl text-zinc-950/90 mb-10 max-w-2xl mx-auto font-medium">
-            Las fechas para la temporada 2025 se están cerrando. Consulta disponibilidad hoy mismo y asegúrate de tener la mejor música en tu día especial.
+            Las fechas para la temporada 2026 se están cerrando. Consulta disponibilidad hoy mismo y asegúrate de tener la mejor música en tu día especial.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/contacto">
-              <Button className="h-16 px-10 text-xl bg-black text-white hover:bg-black/90 shadow-2xl hover:scale-105 transition-transform duration-300 w-full sm:w-auto">
+            <Link href={getWhatsAppLink(WHATSAPP_MESSAGES.general)} target="_blank">
+              <Button as="div" className="h-16 px-10 text-xl bg-black text-white hover:bg-black/90 shadow-2xl hover:scale-105 transition-transform duration-300 w-full sm:w-auto">
                 Reservar Fecha Ahora
               </Button>
             </Link>
@@ -163,31 +156,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer Minimal */}
-      <footer className="bg-black py-12 border-t border-zinc-900">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="text-2xl font-serif font-bold text-white">
-            SAXOFONISTA<span className="text-primary">ALEX</span>
-          </div>
-          <div className="flex gap-8 text-sm text-zinc-300 font-medium tracking-widest uppercase">
-            <Link href="/eventos" className="hover:text-white transition-colors">Eventos</Link>
-            <Link href="/clases" className="hover:text-white transition-colors">Academia</Link>
-            <Link href="/about" className="hover:text-white transition-colors">Bio</Link>
-            <Link href="/contacto" className="hover:text-white transition-colors">Contacto</Link>
-          </div>
-          <div className="flex gap-4">
-            <div className="w-12 h-12 rounded-full bg-zinc-900 flex items-center justify-center text-zinc-400 hover:bg-primary hover:text-black transition-all cursor-pointer">
-              <Mail className="w-5 h-5" />
-            </div>
-            <div className="w-12 h-12 rounded-full bg-zinc-900 flex items-center justify-center text-zinc-400 hover:bg-primary hover:text-black transition-all cursor-pointer">
-              <Phone className="w-5 h-5" />
-            </div>
-          </div>
-        </div>
-        <div className="max-w-7xl mx-auto px-4 mt-8 pt-8 border-t border-zinc-900 text-center md:text-left text-xs text-zinc-400">
-          © 2025 Alex Saxofonista. Todos los derechos reservados. Diseño Premium.
-        </div>
-      </footer>
+
     </>
   );
 }

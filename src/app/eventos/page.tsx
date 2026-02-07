@@ -4,7 +4,6 @@ import { EVENTS } from "@/mocks/events.mock";
 import { EventCard } from "@/features/eventos/components/EventCard";
 import { BookingCTA } from "@/features/eventos/components/BookingCTA";
 import { CalendarPlaceholder } from "@/features/eventos/components/CalendarPlaceholder";
-import { AvailabilityChecker } from "@/features/eventos/components/AvailabilityChecker";
 
 export default function EventosPage() {
     return (
@@ -18,19 +17,17 @@ export default function EventosPage() {
                     <p className="text-xl text-zinc-400">
                         Aporta elegancia y emoción a tu celebración con música en vivo de alta calidad.
                     </p>
-                    <div className="mt-8 flex justify-center gap-4">
-                        <a href="#availability" className="inline-flex items-center justify-center rounded-xl text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-11 px-8">
-                            Verificar Fecha
-                        </a>
-                    </div>
+
                 </div>
             </section>
 
             {/* Services List */}
             <Section>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-8 -mx-4 px-4 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0 md:mx-0 md:px-0 scrollbar-hide">
                     {EVENTS.map((event) => (
-                        <EventCard key={event.id} event={event} />
+                        <div key={event.id} className="min-w-[85vw] snap-center sm:min-w-[400px] md:min-w-0">
+                            <EventCard event={event} />
+                        </div>
                     ))}
                 </div>
             </Section>
@@ -61,11 +58,7 @@ export default function EventosPage() {
                 </div>
             </Section>
 
-            {/* Availability Checker Section */}
-            <Section id="availability" className="bg-zinc-900/50 border-y border-primary/10 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-                <AvailabilityChecker />
-            </Section>
+
 
             {/* Calendar & CTA */}
             <Section>

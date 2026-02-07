@@ -5,6 +5,7 @@ import { Button } from "@/components/Button";
 import Link from "next/link";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
+import { getWhatsAppLink, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
 
 export function EventCatalog() {
     const events = [
@@ -13,35 +14,40 @@ export function EventCatalog() {
             description: "Desde la ceremonia hasta el cóctel. Música que acompaña cada emoción del día más importante.",
             image: "/iloveimg-converted/portada_boda.jpg",
             tags: ["Ceremonia", "Cóctel", "Banquete"],
-            imagePosition: "20% center"
+            imagePosition: "20% center",
+            messageKey: WHATSAPP_MESSAGES.wedding
         },
         {
             title: "Eventos Corporativos",
             description: "Sofisticación para su marca. Un ambiente distinguido para lanzamientos, galas y networking.",
             image: "/iloveimg-converted/portada_evento_coorporativo.jpg",
             tags: ["Galas", "Lanzamientos", "Cenas"],
-            imagePosition: "100% top"
+            imagePosition: "85% top",
+            messageKey: WHATSAPP_MESSAGES.corporate
         },
         {
             title: "Dúo Saxo & Piano",
             description: "La combinación perfecta de elegancia y ritmo. Un diálogo musical que cautiva a todos.",
             image: "/iloveimg-converted/portada_duo.jpg",
             tags: ["Exclusivo", "Duet", "Jazz Lounge"],
-            imagePosition: "100% 20%"
+            imagePosition: "100% 20%",
+            messageKey: WHATSAPP_MESSAGES.duo
         },
         {
             title: "Pedidas de Mano",
             description: "El 'Sí, quiero' merece una banda sonora inolvidable. Intimidad y romanticismo puro.",
             image: "/iloveimg-converted/bodas.jpg",
             tags: ["Romántico", "Sorpresa", "Íntimo"],
-            imagePosition: "40% center"
+            imagePosition: "40% center",
+            messageKey: WHATSAPP_MESSAGES.proposal
         },
         {
             title: "Cumpleaños y Grados",
             description: "Eleva tu celebración con la energía del saxo en vivo. Pop, House, y éxitos actuales.",
             image: "/iloveimg-converted/saxo_venta.jpg",
             tags: ["Fiesta", "Grados", "Rooftops"],
-            imagePosition: "center center"
+            imagePosition: "center center",
+            messageKey: WHATSAPP_MESSAGES.birthday
         }
     ];
 
@@ -54,13 +60,14 @@ export function EventCatalog() {
     // Responsive visible items
     useEffect(() => {
         const handleResize = () => {
+            let newVisibleItems = 4;
             if (window.innerWidth < 768) {
-                setVisibleItems(1);
+                newVisibleItems = 1;
             } else if (window.innerWidth < 1024) {
-                setVisibleItems(2);
-            } else {
-                setVisibleItems(4);
+                newVisibleItems = 2;
             }
+
+            setVisibleItems(prev => prev !== newVisibleItems ? newVisibleItems : prev);
         };
 
         handleResize(); // Init
@@ -148,7 +155,7 @@ export function EventCatalog() {
                     {events.map((event, idx) => (
                         <div
                             key={idx}
-                            className="flex-shrink-0 relative h-[400px] md:h-[500px] pr-4 last:pr-0"
+                            className="flex-shrink-0 relative h-[550px] md:h-[500px] pr-4 last:pr-0"
                             style={{
                                 width: `${100 / visibleItems}%`,
                             }}
@@ -182,7 +189,9 @@ export function EventCatalog() {
                                         {event.description}
                                     </p>
                                     <div className="flex items-center gap-2 text-primary text-sm font-bold uppercase tracking-widest opacity-0 hover:opacity-100 transition-opacity duration-500 delay-300">
-                                        Ver Detalles <ArrowUpRight className="w-4 h-4" />
+                                        <Link href={getWhatsAppLink(event.messageKey)} target="_blank" className="flex items-center gap-2 hover:underline">
+                                            Cotizar en WhatsApp <ArrowUpRight className="w-4 h-4" />
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

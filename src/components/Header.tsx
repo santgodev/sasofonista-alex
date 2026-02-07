@@ -28,9 +28,13 @@ export function Header() {
     }, []);
 
     // Close mobile menu on route change
+    // Close mobile menu on route change
     useEffect(() => {
-        setIsOpen(false);
-    }, [pathname]);
+        if (isOpen) {
+            const timer = setTimeout(() => setIsOpen(false), 0);
+            return () => clearTimeout(timer);
+        }
+    }, [pathname, isOpen]);
 
     return (
         <header
@@ -47,7 +51,7 @@ export function Header() {
                             <Music className="w-5 h-5 text-primary" />
                         </div>
                         <span className="text-xl font-serif font-bold tracking-tight">
-                            Saxofonista Alex
+                            Alex Galindo
                         </span>
                     </Link>
 

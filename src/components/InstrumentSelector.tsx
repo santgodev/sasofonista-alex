@@ -2,13 +2,24 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/Button";
 import { Music2, Mic2 } from "lucide-react";
+import { getWhatsAppLink, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
 
 export function InstrumentSelector() {
     const [activeTab, setActiveTab] = useState("saxo");
 
-    const instruments = {
+    interface Instrument {
+        title: string;
+        subtitle: string;
+        description: string;
+        image: string;
+        icon: React.ReactNode;
+        imagePosition: string;
+    }
+
+    const instruments: Record<string, Instrument> = {
         saxo: {
             title: "Saxofón",
             subtitle: "Tu Voz Melódica",
@@ -51,9 +62,9 @@ export function InstrumentSelector() {
 
                 <div className="mt-8 p-6 bg-zinc-900/30 border border-dashed border-zinc-800 rounded-xl text-center">
                     <p className="text-zinc-300 text-sm mb-3">¿Buscas otro instrumento?</p>
-                    <div className="inline-flex items-center gap-2 text-primary text-sm font-bold cursor-pointer hover:underline">
+                    <Link href={getWhatsAppLink(WHATSAPP_MESSAGES.general)} target="_blank" className="inline-flex items-center gap-2 text-primary text-sm font-bold cursor-pointer hover:underline">
                         Escríbeme y lo organizamos <Mic2 className="w-4 h-4" />
-                    </div>
+                    </Link>
                 </div>
             </div>
 
@@ -70,7 +81,7 @@ export function InstrumentSelector() {
                             fill
                             sizes="(max-width: 1024px) 100vw, 66vw"
                             className="object-cover"
-                            style={{ objectPosition: (data as any).imagePosition || 'center' }}
+                            style={{ objectPosition: data.imagePosition || 'center' }}
                         />
                         <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/80 to-transparent lg:via-zinc-950/60" />
 
@@ -83,9 +94,11 @@ export function InstrumentSelector() {
                                 {data.description}
                             </p>
                             <div className="animate-in fade-in slide-in-from-bottom duration-700 delay-400">
-                                <Button className="bg-white text-black hover:bg-zinc-200">
-                                    Reservar Clase de Prueba
-                                </Button>
+                                <Link href={getWhatsAppLink(WHATSAPP_MESSAGES.academy)} target="_blank">
+                                    <Button as="div" className="bg-white text-black hover:bg-zinc-200">
+                                        Quiero mi Clase de Prueba
+                                    </Button>
+                                </Link>
                             </div>
                         </div>
                     </div>

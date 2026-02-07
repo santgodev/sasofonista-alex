@@ -6,5 +6,7 @@ export interface Event {
     icon?: string; // Icon identifier
     priceRange?: string;
     image?: string;
+    imagePosition?: string;
     features: string[];
+    messageKey?: string;
 }

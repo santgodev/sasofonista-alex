@@ -1,207 +1,62 @@
 "use client";
 
-import { useState } from "react";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/Button";
-import { Mail, Phone, MapPin, MessageSquare, Loader2 } from "lucide-react";
-import { sendEmail } from "@/lib/email";
+import { Briefcase, GraduationCap, Mail, MessageSquare } from "lucide-react";
+import { getWhatsAppLink, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
+import Link from "next/link";
 
 export default function ContactoPage() {
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        subject: "Interés en Clases",
-        message: "",
-        date: "",
-        time: ""
-    });
-    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-    const [responseMessage, setResponseMessage] = useState("");
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-        setFormData(prev => ({ ...prev, [e.target.id]: e.target.value }));
-    };
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setStatus('loading');
-        setResponseMessage("");
-
-        try {
-            await sendEmail({
-                to_name: "Alex", // El destinatario eres tú
-                to_email: "tucorreo@ejemplo.com", // Tu correo (configurado en EmailJS pero bueno pasarlo por si acaso)
-                message: formData.message,
-                date: `${formData.date} ${formData.time}`,
-                subject: formData.subject,
-            });
-
-            setStatus('success');
-            setResponseMessage("¡Mensaje enviado! Me pondré en contacto contigo pronto.");
-            setFormData({ name: "", email: "", subject: "Interés en Clases", message: "", date: "", time: "" });
-
-        } catch (error) {
-            console.error(error);
-            setStatus('error');
-            setResponseMessage("Hubo un error al enviar. Por favor intenta de nuevo o escríbeme por WhatsApp.");
-        }
-    };
-
     return (
         <>
-            <Section className="pt-24 pb-12 text-center">
+            <Section className="min-h-[60vh] flex flex-col items-center justify-center pt-24 pb-12 text-center bg-zinc-950">
                 <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">
-                    Hablemos
+                    Contacto Directo
                 </h1>
-                <p className="text-xl text-zinc-400 max-w-2xl mx-auto">
-                    ¿Tienes un proyecto en mente o quieres empezar clases?
-                    Cuéntame más y te responderé en menos de 24 horas.
+                <p className="text-xl text-zinc-400 max-w-2xl mx-auto mb-16">
+                    Sin formularios. Conecta directamente conmigo vía WhatsApp para una respuesta más rápida.
                 </p>
-            </Section>
 
-            <Section>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-                    {/* Contact Info */}
-                    <div className="space-y-8">
-                        <div className="bg-zinc-900/50 p-8 rounded-2xl border border-white/5">
-                            <h3 className="text-xl font-bold text-white mb-6">Información Directa</h3>
-                            <ul className="space-y-6">
-                                <li className="flex items-start gap-4 text-zinc-300">
-                                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary">
-                                        <MessageSquare className="w-5 h-5" />
-                                    </div>
-                                    <div>
-                                        <strong className="block text-white mb-1">WhatsApp</strong>
-                                        <p className="text-sm text-zinc-400 mb-2">Respuesta rápida para consultas breves.</p>
-                                        <a href="#" className="text-primary hover:underline">Iniciar chat</a>
-                                    </div>
-                                </li>
-                                <li className="flex items-start gap-4 text-zinc-300">
-                                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary">
-                                        <Mail className="w-5 h-5" />
-                                    </div>
-                                    <div>
-                                        <strong className="block text-white mb-1">Email</strong>
-                                        <a href="mailto:info@alexsax.com" className="hover:text-white transition-colors">info@alexsax.com</a>
-                                    </div>
-                                </li>
-                                <li className="flex items-start gap-4 text-zinc-300">
-                                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary">
-                                        <MapPin className="w-5 h-5" />
-                                    </div>
-                                    <div>
-                                        <strong className="block text-white mb-1">Ubicación</strong>
-                                        <p>Disponible para eventos en toda la región.</p>
-                                    </div>
-                                </li>
-                            </ul>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto w-full px-4">
+                    {/* Eventos / Contrataciones */}
+                    <div className="bg-zinc-900/50 p-8 rounded-2xl border border-white/5 hover:border-primary/30 transition-all group">
+                        <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                            <Briefcase className="w-8 h-8 text-primary" />
                         </div>
-                    </div>
-
-                    {/* Form */}
-                    <div className="bg-zinc-900 p-8 rounded-2xl border border-white/10">
-                        <form onSubmit={handleSubmit} className="space-y-6">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <label htmlFor="name" className="text-sm font-medium text-zinc-300">Nombre</label>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        value={formData.name}
-                                        onChange={handleChange}
-                                        required
-                                        className="w-full bg-zinc-950 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
-                                        placeholder="Tu nombre"
-                                    />
-                                </div>
-                                <div className="space-y-2">
-                                    <label htmlFor="email" className="text-sm font-medium text-zinc-300">Email</label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        required
-                                        className="w-full bg-zinc-950 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
-                                        placeholder="tucorreo@ejemplo.com"
-                                    />
-                                </div>
-                            </div>
-
-                            <div className="space-y-2">
-                                <label htmlFor="date" className="text-sm font-medium text-zinc-300">Fecha Deseada</label>
-                                <input
-                                    type="date"
-                                    id="date"
-                                    value={formData.date}
-                                    onChange={handleChange}
-                                    required
-                                    className="w-full bg-zinc-950 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors [color-scheme:dark]"
-                                />
-                            </div>
-
-                            <div className="space-y-2">
-                                <label htmlFor="time" className="text-sm font-medium text-zinc-300">Hora de Inicio Aproximada</label>
-                                <input
-                                    type="time"
-                                    id="time"
-                                    value={formData.time} // We need to add this to state
-                                    onChange={handleChange}
-                                    required
-                                    className="w-full bg-zinc-950 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors [color-scheme:dark]"
-                                />
-                            </div>
-
-                            <div className="space-y-2">
-                                <label htmlFor="subject" className="text-sm font-medium text-zinc-300">Asunto</label>
-                                <select
-                                    id="subject"
-                                    value={formData.subject}
-                                    onChange={handleChange}
-                                    className="w-full bg-zinc-950 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors appearance-none"
-                                >
-                                    <option>Interés en Clases</option>
-                                    <option>Cotización Evento (Boda)</option>
-                                    <option>Cotización Evento (Corporativo)</option>
-                                    <option>Otro</option>
-                                </select>
-                            </div>
-
-                            <div className="space-y-2">
-                                <label htmlFor="message" className="text-sm font-medium text-zinc-300">Mensaje</label>
-                                <textarea
-                                    id="message"
-                                    rows={4}
-                                    value={formData.message}
-                                    onChange={handleChange}
-                                    required
-                                    className="w-full bg-zinc-950 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none"
-                                    placeholder="Cuéntame más sobre tu evento o tus objetivos musicales..."
-                                />
-                            </div>
-
-                            <Button
-                                type="submit"
-                                className="w-full justify-center"
-                                disabled={status === 'loading'}
-                            >
-                                {status === 'loading' ? (
-                                    <>
-                                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                                        Enviando...
-                                    </>
-                                ) : (
-                                    "Enviar Mensaje"
-                                )}
+                        <h3 className="text-2xl font-serif font-bold text-white mb-3">Contrataciones</h3>
+                        <p className="text-zinc-400 mb-8">
+                            Para bodas, eventos corporativos y celebraciones privadas.
+                        </p>
+                        <Link href={getWhatsAppLink(WHATSAPP_MESSAGES.general)} target="_blank">
+                            <Button as="div" className="w-full gap-2">
+                                <MessageSquare className="w-4 h-4" />
+                                Cotizar Evento
                             </Button>
-
-                            {responseMessage && (
-                                <div className={`p-4 rounded-lg text-sm ${status === 'success' ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-red-500/10 text-red-400 border border-red-500/20'}`}>
-                                    {responseMessage}
-                                </div>
-                            )}
-                        </form>
+                        </Link>
                     </div>
+
+                    {/* Academia / Clases */}
+                    <div className="bg-zinc-900/50 p-8 rounded-2xl border border-white/5 hover:border-primary/30 transition-all group">
+                        <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                            <GraduationCap className="w-8 h-8 text-primary" />
+                        </div>
+                        <h3 className="text-2xl font-serif font-bold text-white mb-3">Clases y Academia</h3>
+                        <p className="text-zinc-400 mb-8">
+                            Información sobre cursos de saxofón, piano y técnica vocal.
+                        </p>
+                        <Link href={getWhatsAppLink(WHATSAPP_MESSAGES.academy)} target="_blank">
+                            <Button as="div" variant="outline" className="w-full gap-2 hover:bg-primary hover:text-black">
+                                <MessageSquare className="w-4 h-4" />
+                                Consultar Clases
+                            </Button>
+                        </Link>
+                    </div>
+                </div>
+
+                <div className="mt-16 flex items-center justify-center gap-2 text-zinc-500">
+                    <Mail className="w-4 h-4" />
+                    <span>O envíame un correo a:</span>
+                    <a href="mailto:info@alexsax.com" className="text-primary hover:underline">info@alexsax.com</a>
                 </div>
             </Section>
         </>

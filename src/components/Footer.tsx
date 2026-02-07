@@ -1,5 +1,6 @@
 
 import Link from "next/link";
+import React from "react";
 import { Instagram, Youtube, Mail, Phone } from "lucide-react";
 
 export function Footer() {
@@ -12,14 +13,14 @@ export function Footer() {
                     {/* Brand */}
                     <div className="col-span-1 md:col-span-2">
                         <Link href="/" className="text-2xl font-serif font-bold text-white mb-4 block">
-                            Saxofonista Alex
+                            Alex Galindo
                         </Link>
                         <p className="text-zinc-400 max-w-sm mb-6">
                             Música profesional para eventos inolvidables y enseñanza musical personalizada.
                             Lleva tu evento al siguiente nivel.
                         </p>
                         <div className="flex gap-4">
-                            <SocialLink href="https://www.instagram.com/saxofonistaalexgalindo/" icon={Instagram} label="Instagram Saxofonista Alex Galindo" />
+                            <SocialLink href="https://www.instagram.com/saxofonistaalexgalindo/" icon={Instagram} label="Instagram Alex Galindo" />
                             <SocialLink href="#" icon={Youtube} label="YouTube" />
                             <SocialLink href="mailto:info@alexsax.com" icon={Mail} label="Email" />
                         </div>
@@ -29,10 +30,10 @@ export function Footer() {
                     <div>
                         <h3 className="font-serif font-bold text-white mb-4">Servicios</h3>
                         <ul className="space-y-3">
-                            <FooterLink href="/eventos">Bodas y Eventos</FooterLink>
+                            <FooterLink href="/eventos">Bodas</FooterLink>
+                            <FooterLink href="/eventos">Eventos Corporativos</FooterLink>
+                            <FooterLink href="/eventos">Fiestas Privadas</FooterLink>
                             <FooterLink href="/clases">Clases de Saxofón</FooterLink>
-                            <FooterLink href="/clases">Clases de Piano</FooterLink>
-                            <FooterLink href="/clases">Clases de Canto</FooterLink>
                         </ul>
                     </div>
 
@@ -57,7 +58,7 @@ export function Footer() {
 
                 <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-zinc-400 text-sm">
-                        © {currentYear} Saxofonista Alex. Todos los derechos reservados.
+                        © {currentYear} Alex Galindo. Todos los derechos reservados.
                     </p>
                     <div className="flex gap-6 text-sm text-zinc-400">
                         <Link href="#" className="hover:text-white transition-colors">Privacidad</Link>
@@ -69,7 +70,7 @@ export function Footer() {
     );
 }
 
-function SocialLink({ href, icon: Icon, label }: { href: string; icon: any; label: string }) {
+function SocialLink({ href, icon: Icon, label }: { href: string; icon: React.ElementType; label: string }) {
     return (
         <a
             href={href}

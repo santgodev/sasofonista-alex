@@ -121,7 +121,7 @@ export function HeroImageSequence() {
                 canvasRef.current.width = window.innerWidth;
                 canvasRef.current.height = window.innerHeight;
                 // Redraw current frame immediately after resize to avoid blank flash
-                if (!isLoading && imagesRef.current.length > 0) {
+                if (imagesRef.current.length > 0) {
                     drawFrame(frameIndexRef.current);
                 }
             }

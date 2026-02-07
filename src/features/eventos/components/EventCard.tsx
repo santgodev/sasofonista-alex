@@ -5,6 +5,7 @@ import { Button } from "@/components/Button";
 import { ImagePlaceholder } from "@/components/ImagePlaceholder";
 import Link from "next/link";
 import Image from "next/image";
+import { getWhatsAppLink, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
 
 interface EventCardProps {
     event: Event;
@@ -13,13 +14,14 @@ interface EventCardProps {
 export function EventCard({ event }: EventCardProps) {
     return (
         <div className="group relative overflow-hidden rounded-2xl bg-zinc-900 border border-white/10 hover:border-primary/50 transition-all duration-500">
-            <div className="aspect-video relative overflow-hidden">
+            <div className="aspect-[3/4] relative overflow-hidden">
                 {event.image ? (
                     <Image
                         src={event.image}
                         alt={event.title}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-700"
+                        style={{ objectPosition: event.imagePosition || "center" }}
                     />
                 ) : (
                     <ImagePlaceholder
@@ -49,12 +51,13 @@ export function EventCard({ event }: EventCardProps) {
                 </ul>
 
                 <div className="flex items-center justify-between pt-6 border-t border-white/5">
-                    <div className="text-sm">
-                        <span className="text-zinc-500 block">Inversión estimada</span>
-                        <span className="text-white font-medium">{event.priceRange || "Consultar"}</span>
+                    <div className="text-sm text-zinc-500">
+                        Agenda tu fecha
                     </div>
-                    <Link href="/contacto">
-                        <Button variant="outline" size="sm">Cotizar</Button>
+                    <Link href={getWhatsAppLink(event.messageKey || WHATSAPP_MESSAGES.general)} target="_blank">
+                        <Button as="div" variant="outline" size="sm" className="hover:bg-primary hover:text-black hover:border-primary transition-all">
+                            Cotizar Ahora
+                        </Button>
                     </Link>
                 </div>
             </div>

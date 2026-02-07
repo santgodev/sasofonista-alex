@@ -5,6 +5,7 @@ import { ImagePlaceholder } from "@/components/ImagePlaceholder";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { getWhatsAppLink, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
 
 interface CourseCardProps {
     course: Course;
@@ -55,9 +56,9 @@ export function CourseCard({ course }: CourseCardProps) {
                     ))}
                 </div>
 
-                <Link href="/contacto">
-                    <Button variant="ghost" className="pl-0 hover:bg-transparent hover:text-primary gap-2 group/btn">
-                        Más Información
+                <Link href={getWhatsAppLink(WHATSAPP_MESSAGES.academy)} target="_blank">
+                    <Button as="div" variant="outline" className="gap-2 hover:bg-primary hover:text-black hover:border-primary transition-all w-full sm:w-auto justify-center group/btn">
+                        Inscribirme Ahora
                         <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                     </Button>
                 </Link>
