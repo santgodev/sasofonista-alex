@@ -7,6 +7,7 @@ import { Section } from "@/components/Section";
 import { HeroVideo } from "@/components/HeroVideo";
 import { EventCatalog } from "@/components/EventCatalog";
 import { InstrumentSelector } from "@/components/InstrumentSelector";
+import { InstagramFeed } from "@/components/InstagramFeed";
 import { ArrowDown } from "lucide-react";
 import { getWhatsAppLink, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
 import { useEffect, useState } from "react";
@@ -153,6 +154,9 @@ export default function Home() {
         </div>
         <InstrumentSelector />
       </Section>
+
+      {/* Social Proof - Instagram Teaser */}
+      <InstagramFeed />
 
       {/* Lead Capture / Footer CTA */}
       <section className="relative py-20 md:py-32 bg-primary overflow-hidden">
