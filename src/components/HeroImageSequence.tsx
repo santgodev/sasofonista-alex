@@ -19,38 +19,41 @@ export function HeroImageSequence() {
         let loadedCount = 0;
         // Optimization: Reduce frame count by skipping frames (load every 3rd frame)
         // Original: 191 frames (~10MB) -> New: ~64 frames (~3.3MB)
-        const SKIP_FACTOR = 1;
+        const SKIP_FACTOR = 3;
         const totalFramesToLoad = Math.floor(frameCount / SKIP_FACTOR) + 1;
         const images: HTMLImageElement[] = [];
 
-        const preloadImages = () => {
-            // Create a sparse array or just map the indices
-            // We will store only the loaded images and handle index mapping in draw
-
-            // Actually, better to keep the array full size but only populate used indices 
-            // OR re-map time to the smaller array.
-            // Let's re-map time for simplicity and memory.
-
+        const preloadImages = async () => {
+            const BATCH_SIZE = 5;
+            const indices = [];
             for (let i = 0; i <= frameCount; i += SKIP_FACTOR) {
-                const img = new Image();
-                const frameNumber = i.toString().padStart(3, "0");
-                img.src = `/hero/frame_${frameNumber}.jpg`;
-
-                img.onload = () => {
-                    loadedCount++;
-                    const currentProgress = Math.round((loadedCount / totalFramesToLoad) * 100);
-                    setProgress(currentProgress);
-
-                    if (loadedCount === totalFramesToLoad) {
-                        setIsLoading(false);
-                        startAnimation();
-                    }
-                };
-                // Store at the correct "simulated" index or push to a new sequence?
-                // Pushing to new sequence changes the logic of "frameIndex"
-                images.push(img);
+                indices.push(i);
             }
-            imagesRef.current = images;
+
+            for (let i = 0; i < indices.length; i += BATCH_SIZE) {
+                const batch = indices.slice(i, i + BATCH_SIZE);
+                await Promise.all(batch.map(index => {
+                    return new Promise<void>((resolve) => {
+                        const img = new Image();
+                        const frameNumber = index.toString().padStart(3, "0");
+                        img.src = `/hero/frame_${frameNumber}.jpg`;
+                        img.onload = () => {
+                            imagesRef.current[index] = img;
+                            loadedCount++;
+                            const currentProgress = Math.round((loadedCount / totalFramesToLoad) * 100);
+                            setProgress(currentProgress);
+                            resolve();
+                        };
+                    });
+                }));
+
+                if (loadedCount === totalFramesToLoad) {
+                    setIsLoading(false);
+                    startAnimation();
+                }
+                // Small gap to prevent thread locking
+                await new Promise(resolve => setTimeout(resolve, 10));
+            }
         };
 
         const startAnimation = () => {
@@ -63,19 +66,17 @@ export function HeroImageSequence() {
             if (!lastFrameTimeRef.current) lastFrameTimeRef.current = timestamp;
             const elapsed = timestamp - lastFrameTimeRef.current;
 
-            // Reduce FPS to 12 effectively since we have fewer frames but want similar duration?
-            // No, getting every 3rd frame means the motion is faster if we play at same FPS.
-            // Original: 192 frames @ 24fps = 8 seconds.
-            // New: 64 frames. If we play @ 24fps = 2.6 seconds (Too fast!)
-            // We need to reduce FPS to (24 / 3) = 8fps to keep the same 8s duration.
-            // Let's try 12fps for a slightly speedier but still smooth look, or 8fps for exact match.
-            // Going with 12fps for a good balance of smoothness and data.
-            const playbackFps = 24;
+            // Original: 24fps. Since we have 1/3 frames, we can play at 8fps to match duration,
+            // or 12fps for a slightly speedier cinematic look. Let's stick to 12fps for smoothness.
+            const playbackFps = 12;
             const playbackInterval = 1000 / playbackFps;
 
             if (elapsed > playbackInterval) {
-                // Use imagesRef.current.length which is the smaller array size
-                frameIndexRef.current = (frameIndexRef.current + 1) % imagesRef.current.length;
+                // Find next available frame
+                let nextIdx = (frameIndexRef.current + SKIP_FACTOR);
+                if (nextIdx > frameCount) nextIdx = 0;
+
+                frameIndexRef.current = nextIdx;
                 drawFrame(frameIndexRef.current);
                 lastFrameTimeRef.current = timestamp - (elapsed % playbackInterval);
             }

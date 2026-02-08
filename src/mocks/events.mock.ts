@@ -7,7 +7,7 @@ export const EVENTS: Event[] = [
         id: "bodas",
         title: "Bodas Exclusivas",
         description: "Desde la ceremonia hasta el cóctel. Música que acompaña cada emoción del día más importante.",
-        image: "/iloveimg-converted/portada_boda.jpg",
+        image: "/iloveimg-converted/portada_boda.webp",
         features: [
             "Repertorio personalizado",
             "Música para Ceremonia",
@@ -21,7 +21,7 @@ export const EVENTS: Event[] = [
         id: "corporativos",
         title: "Eventos Corporativos",
         description: "Sofisticación para su marca. Un ambiente distinguido para lanzamientos, galas y networking.",
-        image: "/iloveimg-converted/portada_evento_coorporativo.jpg",
+        image: "/iloveimg-converted/portada_evento_coorporativo.webp",
         features: [
             "Galas de Premiación",
             "Lanzamientos de Marca",
@@ -35,7 +35,7 @@ export const EVENTS: Event[] = [
         id: "duo",
         title: "Dúo Saxo & Piano",
         description: "La combinación perfecta de elegancia y ritmo. Un diálogo musical que cautiva a todos.",
-        image: "/iloveimg-converted/portada_duo.jpg",
+        image: "/iloveimg-converted/portada_duo.webp",
         features: [
             "Formato Exclusivo",
             "Jazz Lounge",
@@ -49,7 +49,7 @@ export const EVENTS: Event[] = [
         id: "pedidas",
         title: "Pedidas de Mano",
         description: "El 'Sí, quiero' merece una banda sonora inolvidable. Intimidad y romanticismo puro.",
-        image: "/iloveimg-converted/bodas.jpg",
+        image: "/iloveimg-converted/bodas.webp",
         features: [
             "Momento Sorpresa",
             "Canción Especial",
@@ -62,7 +62,7 @@ export const EVENTS: Event[] = [
         id: "cumpleanos",
         title: "Cumpleaños y Grados",
         description: "Eleva tu celebración con la energía del saxo en vivo. Pop, House, y éxitos actuales.",
-        image: "/iloveimg-converted/portada_cumpleaños.jpg",
+        image: "/iloveimg-converted/portada_cumpleaños.webp",
         features: [
             "Fiesta y Energía",
             "Show en Vivo",

@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/Button";
-import { Mail } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { getWhatsAppLink, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
 import Link from "next/link";
 
@@ -15,7 +15,7 @@ export function InquiryCTA() {
             </p>
             <Link href={getWhatsAppLink(WHATSAPP_MESSAGES.academy)} target="_blank">
                 <Button as="div" variant="outline" className="gap-2 hover:bg-primary hover:text-black hover:border-primary transition-all">
-                    <Mail className="w-4 h-4" />
+                    <MessageCircle className="w-4 h-4" />
                     Agendar Evaluación Gratuita
                 </Button>
             </Link>

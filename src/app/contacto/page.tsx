@@ -27,12 +27,16 @@ export default function ContactoPage() {
                         <p className="text-zinc-400 mb-8">
                             Para bodas, eventos corporativos y celebraciones privadas.
                         </p>
-                        <Link href={getWhatsAppLink(WHATSAPP_MESSAGES.general)} target="_blank">
-                            <Button as="div" className="w-full gap-2">
-                                <MessageSquare className="w-4 h-4" />
-                                Cotizar Evento
-                            </Button>
-                        </Link>
+                        <Button
+                            as={Link}
+                            href={getWhatsAppLink(WHATSAPP_MESSAGES.general)}
+                            target="_blank"
+                            className="w-full gap-2"
+                        >
+                            <MessageSquare className="w-4 h-4" />
+                            Cotizar Evento
+                        </Button>
+
                     </div>
 
                     {/* Academia / Clases */}
@@ -44,20 +48,20 @@ export default function ContactoPage() {
                         <p className="text-zinc-400 mb-8">
                             Información sobre cursos de saxofón, piano y técnica vocal.
                         </p>
-                        <Link href={getWhatsAppLink(WHATSAPP_MESSAGES.academy)} target="_blank">
-                            <Button as="div" variant="outline" className="w-full gap-2 hover:bg-primary hover:text-black">
-                                <MessageSquare className="w-4 h-4" />
-                                Consultar Clases
-                            </Button>
-                        </Link>
+                        <Button
+                            as={Link}
+                            href={getWhatsAppLink(WHATSAPP_MESSAGES.academy)}
+                            target="_blank"
+                            variant="outline"
+                            className="w-full gap-2 hover:bg-primary hover:text-black"
+                        >
+                            <MessageSquare className="w-4 h-4" />
+                            Consultar Clases
+                        </Button>
+
                     </div>
                 </div>
 
-                <div className="mt-16 flex items-center justify-center gap-2 text-zinc-500">
-                    <Mail className="w-4 h-4" />
-                    <span>O envíame un correo a:</span>
-                    <a href="mailto:info@alexsax.com" className="text-primary hover:underline">info@alexsax.com</a>
-                </div>
             </Section>
         </>
     );

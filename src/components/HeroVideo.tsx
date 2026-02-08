@@ -1,55 +1,64 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
+
 
 interface HeroVideoProps {
+    videoUrl?: string;
     desktopVideoUrl?: string;
     mobileVideoUrl?: string;
     posterUrl?: string;
+    onReady?: () => void;
 }
 
 export function HeroVideo({
-    desktopVideoUrl = "https://your-bucket.com/hero-desktop.mp4", // Placeholder
-    mobileVideoUrl = "https://your-bucket.com/hero-mobile.mp4",   // Placeholder
-    posterUrl = "/images/saxo.webp"                               // Placeholder
+    videoUrl,
+    desktopVideoUrl,
+    mobileVideoUrl,
+    posterUrl = "/hero/frame_000.jpg",
+    onReady
 }: HeroVideoProps) {
-    const [isMobile, setIsMobile] = useState(false);
-    const [videoSrc, setVideoSrc] = useState("");
     const [isReady, setIsReady] = useState(false);
     const videoRef = useRef<HTMLVideoElement>(null);
 
-    useEffect(() => {
-        const checkMobile = () => {
-            const mobile = window.matchMedia("(max-width: 768px)").matches;
-            setIsMobile(mobile);
-            setVideoSrc(mobile ? mobileVideoUrl : desktopVideoUrl);
-            setIsReady(false); // Reset ready state when source changes
-        };
+    const handleReady = () => {
+        if (!isReady) {
+            setIsReady(true);
+            onReady?.();
+        }
+    };
 
-        checkMobile();
-        window.addEventListener("resize", checkMobile);
-        return () => window.removeEventListener("resize", checkMobile);
-    }, [desktopVideoUrl, mobileVideoUrl]);
+    // Check if video is already ready (cached)
+    useState(() => {
+        if (typeof window !== 'undefined' && videoRef.current?.readyState && videoRef.current.readyState >= 3) {
+            handleReady();
+        }
+    });
 
     return (
         <div className="absolute inset-0 bg-black">
             {/* Background Video */}
-            {videoSrc && (
-                <video
-                    ref={videoRef}
-                    key={videoSrc}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    poster={posterUrl}
-                    onCanPlay={() => setIsReady(true)}
-                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[2000ms] ${isReady ? "opacity-100" : "opacity-0"
-                        }`}
-                >
-                    <source src={videoSrc} type="video/mp4" />
-                </video>
-            )}
+            <video
+                ref={videoRef}
+                autoPlay
+                muted
+                loop
+                playsInline
+                // @ts-ignore - fetchPriority is supported but might not be in all TS types yet
+                fetchPriority="high"
+                preload="auto"
+                poster={posterUrl}
+                onLoadedData={handleReady}
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[800ms] ${isReady ? "opacity-100" : "opacity-0"
+                    }`}
+            >
+                {/* Desktop: Screens >= 768px */}
+                <source src={desktopVideoUrl} media="(min-width: 768px)" type="video/mp4" />
+                {/* Mobile: Default fallback */}
+                <source src={mobileVideoUrl} type="video/mp4" />
+                <track kind="captions" src="data:text/vtt;base64,V0VCVlRU" label="Sin sonido" />
+            </video>
+
 
             {/* Dark Overlay for better text readability */}
             <div className="absolute inset-0 bg-black/40 z-10" />

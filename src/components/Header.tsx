@@ -20,6 +20,9 @@ export function Header() {
     const pathname = usePathname();
 
     useEffect(() => {
+        // Global safety reset for scroll lock
+        document.body.style.overflow = "unset";
+
         const handleScroll = () => {
             setScrolled(window.scrollY > 20);
         };
@@ -29,12 +32,10 @@ export function Header() {
 
     // Close mobile menu on route change
     // Close mobile menu on route change
+    // Close mobile menu on route change
     useEffect(() => {
-        if (isOpen) {
-            const timer = setTimeout(() => setIsOpen(false), 0);
-            return () => clearTimeout(timer);
-        }
-    }, [pathname, isOpen]);
+        setIsOpen(false);
+    }, [pathname]);
 
     return (
         <header

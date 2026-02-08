@@ -1,21 +1,22 @@
-import { ButtonHTMLAttributes, ElementType, ReactNode } from "react";
+import { ElementType, ComponentPropsWithoutRef, ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+type ButtonProps<T extends ElementType> = {
     children: ReactNode;
     variant?: "primary" | "outline" | "ghost";
     size?: "sm" | "md" | "lg";
-    as?: ElementType;
-}
+    as?: T;
+} & ComponentPropsWithoutRef<T>;
 
-export function Button({
+export function Button<T extends ElementType = "button">({
     children,
     variant = "primary",
     size = "md",
     className,
-    as: Component = "button",
+    as: Component,
     ...props
-}: ButtonProps) {
+}: ButtonProps<T>) {
+    const Tag = Component || "button";
     const baseStyles = "inline-flex items-center justify-center rounded-full transition-all duration-300 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
 
     const variants = {
@@ -31,11 +32,12 @@ export function Button({
     };
 
     return (
-        <Component
+        <Tag
             className={twMerge(baseStyles, variants[variant], sizes[size], className)}
-            {...props as any}
+            {...props}
         >
             {children}
-        </Component>
+        </Tag>
     );
 }
+

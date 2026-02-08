@@ -56,12 +56,17 @@ export function CourseCard({ course }: CourseCardProps) {
                     ))}
                 </div>
 
-                <Link href={getWhatsAppLink(WHATSAPP_MESSAGES.academy)} target="_blank">
-                    <Button as="div" variant="outline" className="gap-2 hover:bg-primary hover:text-black hover:border-primary transition-all w-full sm:w-auto justify-center group/btn">
-                        Inscribirme Ahora
-                        <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                    </Button>
-                </Link>
+                <Button
+                    as={Link}
+                    href={getWhatsAppLink(WHATSAPP_MESSAGES.academy)}
+                    target="_blank"
+                    variant="outline"
+                    className="gap-2 hover:bg-primary hover:text-black hover:border-primary transition-all w-full sm:w-auto justify-center group/btn"
+                >
+                    Inscribirme Ahora
+                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                </Button>
+
             </div>
         </div>
     );

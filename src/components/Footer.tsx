@@ -22,7 +22,6 @@ export function Footer() {
                         <div className="flex gap-4 justify-center md:justify-start">
                             <SocialLink href="https://www.instagram.com/saxofonistaalexgalindo/" icon={Instagram} label="Instagram Alex Galindo" />
                             <SocialLink href="#" icon={Youtube} label="YouTube" />
-                            <SocialLink href="mailto:info@alexsax.com" icon={Mail} label="Email" />
                         </div>
                     </div>
 
@@ -41,10 +40,6 @@ export function Footer() {
                     <div>
                         <h3 className="font-serif font-bold text-white mb-4">Contacto</h3>
                         <ul className="space-y-3 flex flex-col items-center md:items-start">
-                            <li className="flex items-center gap-2 text-zinc-400">
-                                <Mail className="w-4 h-4" />
-                                info@alexsax.com
-                            </li>
                             <li className="flex items-center gap-2 text-zinc-400">
                                 <Phone className="w-4 h-4" />
                                 +57 3132863989

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Button } from "@/components/Button";
+
 import Link from "next/link";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
@@ -12,7 +12,7 @@ export function EventCatalog() {
         {
             title: "Bodas Exclusivas",
             description: "Desde la ceremonia hasta el cóctel. Música que acompaña cada emoción del día más importante.",
-            image: "/iloveimg-converted/portada_boda.jpg",
+            image: "/iloveimg-converted/portada_boda.webp",
             tags: ["Ceremonia", "Cóctel", "Banquete"],
             imagePosition: "20% center",
             messageKey: WHATSAPP_MESSAGES.wedding
@@ -20,7 +20,7 @@ export function EventCatalog() {
         {
             title: "Eventos Corporativos",
             description: "Sofisticación para su marca. Un ambiente distinguido para lanzamientos, galas y networking.",
-            image: "/iloveimg-converted/portada_evento_coorporativo.jpg",
+            image: "/iloveimg-converted/portada_evento_coorporativo.webp",
             tags: ["Galas", "Lanzamientos", "Cenas"],
             imagePosition: "85% top",
             messageKey: WHATSAPP_MESSAGES.corporate
@@ -28,7 +28,7 @@ export function EventCatalog() {
         {
             title: "Dúo Saxo & Piano",
             description: "La combinación perfecta de elegancia y ritmo. Un diálogo musical que cautiva a todos.",
-            image: "/iloveimg-converted/portada_duo.jpg",
+            image: "/iloveimg-converted/portada_duo.webp",
             tags: ["Exclusivo", "Duet", "Jazz Lounge"],
             imagePosition: "100% 20%",
             messageKey: WHATSAPP_MESSAGES.duo
@@ -36,7 +36,7 @@ export function EventCatalog() {
         {
             title: "Pedidas de Mano",
             description: "El 'Sí, quiero' merece una banda sonora inolvidable. Intimidad y romanticismo puro.",
-            image: "/iloveimg-converted/bodas.jpg",
+            image: "/iloveimg-converted/bodas.webp",
             tags: ["Romántico", "Sorpresa", "Íntimo"],
             imagePosition: "40% center",
             messageKey: WHATSAPP_MESSAGES.proposal
@@ -44,7 +44,7 @@ export function EventCatalog() {
         {
             title: "Cumpleaños y Grados",
             description: "Eleva tu celebración con la energía del saxo en vivo. Pop, House, y éxitos actuales.",
-            image: "/iloveimg-converted/portada_cumpleaños.jpg",
+            image: "/iloveimg-converted/portada_cumpleaños.webp",
             tags: ["Fiesta", "Grados", "Rooftops"],
             imagePosition: "center center",
             messageKey: WHATSAPP_MESSAGES.birthday
@@ -164,7 +164,7 @@ export function EventCatalog() {
                             <div className="relative w-full h-full overflow-hidden rounded-2xl cursor-pointer group/card border border-white/5">
                                 <Image
                                     src={event.image}
-                                    alt={`${event.title} - Saxofonista Alex Galindo Bogotá`}
+                                    alt={`${event.title} - Saxofonista Alex Galindo Bogotá Colombia`}
                                     fill
                                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                                     quality={90}
@@ -174,8 +174,8 @@ export function EventCatalog() {
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-90 md:opacity-80 md:group-hover/card:opacity-90 transition-opacity" />
 
-                                <div className="absolute inset-x-0 bottom-0 p-5 md:p-6 md:translate-y-4 md:group-hover/card:translate-y-0 transition-transform duration-500">
-                                    <div className="flex flex-wrap gap-2 mb-3 opacity-100 md:opacity-0 md:group-hover/card:opacity-100 transition-opacity duration-500 delay-100">
+                                <div className="absolute inset-x-0 bottom-0 p-5 md:p-6 md:translate-y-4 md:group-hover/card:translate-y-0 transition-transform duration-500 text-center md:text-left">
+                                    <div className="flex flex-wrap justify-center md:justify-start gap-2 mb-3 opacity-100 md:opacity-0 md:group-hover/card:opacity-100 transition-opacity duration-500 delay-100">
                                         {event.tags.map((tag, tIdx) => (
                                             <span key={tIdx} className="text-[10px] uppercase tracking-wider font-bold px-2 py-1 bg-white/20 backdrop-blur-md rounded text-white border border-white/10">
                                                 {tag}
@@ -188,11 +188,12 @@ export function EventCatalog() {
                                     <p className="text-zinc-200 text-xs md:text-sm mb-4 opacity-100 md:opacity-0 md:group-hover/card:opacity-100 transition-opacity duration-500 delay-200 line-clamp-3 md:line-clamp-none">
                                         {event.description}
                                     </p>
-                                    <div className="flex items-center gap-2 text-primary text-sm font-bold uppercase tracking-widest opacity-100 md:opacity-0 md:group-hover/card:opacity-100 transition-opacity duration-500 delay-300">
+                                    <div className="flex items-center justify-center md:justify-start gap-2 text-primary text-sm font-bold uppercase tracking-widest opacity-100 md:opacity-0 md:group-hover/card:opacity-100 transition-opacity duration-500 delay-300">
                                         <Link href={getWhatsAppLink(event.messageKey)} target="_blank" className="flex items-center gap-2 hover:underline">
                                             Cotizar <ArrowUpRight className="w-4 h-4" />
                                         </Link>
                                     </div>
+
                                 </div>
                             </div>
                         </div>

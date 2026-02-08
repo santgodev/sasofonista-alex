@@ -1,23 +1,26 @@
 
 import { Section } from "@/components/Section";
-import { COURSES } from "@/mocks/courses.mock";
-import { CourseCard } from "@/features/clases/components/CourseCard";
 import { InquiryCTA } from "@/features/clases/components/InquiryCTA";
-import { ImagePlaceholder } from "@/components/ImagePlaceholder";
 import Image from "next/image";
+import { AcademyLevels } from "@/features/clases/components/AcademyLevels";
+
+export const metadata = {
+    title: "Clases de Saxofón y Música",
+    description: "Aprende saxofón en Bogotá con Alex Galindo. Clases personalizadas para todos los niveles: iniciación, medio y avanzado.",
+};
 
 export default function ClasesPage() {
     return (
         <>
-            <section className="relative py-24 bg-zinc-900 border-b border-white/5 overflow-hidden min-h-[75vh] flex items-center justify-center">
+            <section className="relative py-24 bg-zinc-900 border-b border-white/5 overflow-hidden min-h-[90vh] flex items-center justify-center">
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src="/iloveimg-converted/saxo_venta_3.jpg"
+                        src="/images/academy/manolito.webp"
                         alt="Clases de Saxofón Alex Galindo"
                         fill
                         className="object-cover opacity-60"
-                        style={{ objectPosition: 'center 15%' }}
+                        style={{ objectPosition: 'center 50%' }}
                         priority
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-transparent" />
@@ -35,12 +38,7 @@ export default function ClasesPage() {
             </section>
 
             <Section>
-                <div className="space-y-6">
-                    {COURSES.map((course) => (
-                        <CourseCard key={course.id} course={course} />
-                    ))}
-                </div>
-
+                <AcademyLevels />
                 <InquiryCTA />
             </Section>
 
@@ -50,7 +48,7 @@ export default function ClasesPage() {
                     <div>
                         <div className="relative w-full h-[500px] rounded-2xl overflow-hidden">
                             <Image
-                                src="/iloveimg-converted/portada_clases.jpg"
+                                src="/iloveimg-converted/portada_clases.webp"
                                 alt="Profesor Alex en clase"
                                 fill
                                 className="object-cover"

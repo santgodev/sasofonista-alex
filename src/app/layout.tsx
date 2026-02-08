@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
+import { SchemaMarkup } from "@/components/SchemaMarkup";
 
 export const dynamic = "force-static";
 
@@ -31,7 +32,8 @@ export const metadata: Metadata = {
   keywords: ["Saxofonista Bogotá", "Saxofonista Colombia", "Alex Galindo", "Bodas Bogotá", "Música en vivo Colombia", "Saxofonista Eventos", "Jazz", "House", "DJ Sax"],
   authors: [{ name: "Alex Galindo" }],
   creator: "Alex Galindo",
-  metadataBase: new URL("https://alexsaxofonista.com"), // Placeholder domain
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://alexsaxofonista.com"),
+
   openGraph: {
     type: "website",
     locale: "es_ES",
@@ -81,7 +83,7 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${playfair.variable} ${lato.variable}`}>
       <body
-        className={`antialiased bg-background text-foreground font-sans`}
+        className={`antialiased bg-background text-foreground font-sans selection:bg-primary/30`}
       >
         <Header />
         <main className="min-h-screen pt-20">
@@ -89,6 +91,8 @@ export default function RootLayout({
         </main>
         <WhatsAppFloat />
         <Footer />
+        {/* Load heavy scripts later to improve TBT */}
+        <SchemaMarkup />
       </body>
     </html>
   );

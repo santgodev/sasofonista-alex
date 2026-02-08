@@ -14,8 +14,8 @@ export default function AboutPage() {
             <section className="relative h-[60vh] flex items-center justify-center overflow-hidden bg-zinc-950">
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src="/iloveimg-converted/bio.jpg"
-                        alt="Alex Galindo Saxofonista"
+                        src="/iloveimg-converted/bio.webp"
+                        alt="Alex Galindo Saxofonista Profesional Bogotá Colombia"
                         fill
                         className="object-cover opacity-40 blur-sm"
                     />
@@ -67,16 +67,16 @@ export default function AboutPage() {
                         <div className="space-y-4 md:space-y-6">
                             <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
                                 <Image
-                                    src="/iloveimg-converted/bio2.jpg"
-                                    alt="Alex Galindo Saxofonista Bio 2"
+                                    src="/iloveimg-converted/bio2.webp"
+                                    alt="Alex Galindo Saxofonista Eventos Corporativos Colombia"
                                     fill
                                     className="object-cover hover:scale-105 transition-transform duration-700"
                                 />
                             </div>
                             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
                                 <Image
-                                    src="/iloveimg-converted/bio4.jpg"
-                                    alt="Alex Galindo Saxofonista Bio 4"
+                                    src="/iloveimg-converted/bio4.webp"
+                                    alt="Alex Galindo Saxofonista Bodas y Matrimonios Bogotá"
                                     fill
                                     className="object-cover hover:scale-105 transition-transform duration-700"
                                 />
@@ -85,8 +85,8 @@ export default function AboutPage() {
                         <div className="space-y-4 md:space-y-6 pt-8 md:pt-16">
                             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
                                 <Image
-                                    src="/iloveimg-converted/bio3.jpg"
-                                    alt="Alex Galindo Saxofonista Bio 3"
+                                    src="/iloveimg-converted/bio3.webp"
+                                    alt="Show de Saxofón en Vivo Alex Galindo Colombia"
                                     fill
                                     className="object-cover hover:scale-105 transition-transform duration-700"
                                 />

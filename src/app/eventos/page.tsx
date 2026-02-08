@@ -39,21 +39,26 @@ export default function EventosPage() {
                     <p className="text-zinc-400">Simple, claro y sin sorpresas.</p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center px-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center px-4 max-w-6xl mx-auto">
                     <div className="relative">
                         <div className="w-16 h-16 rounded-full bg-zinc-900 border border-primary/20 text-primary text-2xl font-bold flex items-center justify-center mx-auto mb-6 z-10 relative">1</div>
-                        <h3 className="text-xl font-bold text-white mb-3">Consulta</h3>
-                        <p className="text-zinc-400 text-sm">Verificamos disponibilidad y definimos el repertorio ideal para tu evento.</p>
+                        <h3 className="text-xl font-bold text-white mb-3">Disponibilidad</h3>
+                        <p className="text-zinc-400 text-sm">Verificamos la fecha y hora de tu evento para asegurar mi participación.</p>
                     </div>
                     <div className="relative">
                         <div className="w-16 h-16 rounded-full bg-zinc-900 border border-primary/20 text-primary text-2xl font-bold flex items-center justify-center mx-auto mb-6 z-10 relative">2</div>
                         <h3 className="text-xl font-bold text-white mb-3">Reserva</h3>
-                        <p className="text-zinc-400 text-sm">Aseguras la fecha con un anticipo del 30%. Recibes contrato formal.</p>
+                        <p className="text-zinc-400 text-sm">Aseguras la fecha con un anticipo del 50% del valor total.</p>
                     </div>
                     <div className="relative">
-                        <div className="w-16 h-16 rounded-full bg-primary text-background text-2xl font-bold flex items-center justify-center mx-auto mb-6 z-10 relative">3</div>
-                        <h3 className="text-xl font-bold text-white mb-3">¡Música!</h3>
-                        <p className="text-zinc-400 text-sm">Todo listo. Yo me encargo del montaje y la música. Tú disfruta.</p>
+                        <div className="w-16 h-16 rounded-full bg-zinc-900 border border-primary/20 text-primary text-2xl font-bold flex items-center justify-center mx-auto mb-6 z-10 relative">3</div>
+                        <h3 className="text-xl font-bold text-white mb-3">Contrato</h3>
+                        <p className="text-zinc-400 text-sm">Recibes un contrato formal que respalda y garantiza el servicio.</p>
+                    </div>
+                    <div className="relative">
+                        <div className="w-16 h-16 rounded-full bg-primary text-background text-2xl font-bold flex items-center justify-center mx-auto mb-6 z-10 relative">4</div>
+                        <h3 className="text-xl font-bold text-white mb-3">Detalles</h3>
+                        <p className="text-zinc-400 text-sm">Definimos el repertorio ideal y los detalles técnicos del evento.</p>
                     </div>
                 </div>
             </Section>

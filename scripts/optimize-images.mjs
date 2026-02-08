@@ -8,6 +8,7 @@ const __dirname = path.dirname(__filename);
 
 const imagesDir = path.join(__dirname, '../public/images');
 const heroDir = path.join(__dirname, '../public/hero');
+const convertedDir = path.join(__dirname, '../public/iloveimg-converted');
 
 async function processDirectory(directory, quality = 80, width = 1200) {
     if (!fs.existsSync(directory)) return;
@@ -16,7 +17,7 @@ async function processDirectory(directory, quality = 80, width = 1200) {
     console.log(`Processing ${directory}...`);
 
     for (const file of files) {
-        if (file.endsWith('.png') || file.endsWith('.jpg')) {
+        if (file.toLowerCase().endsWith('.png') || file.toLowerCase().endsWith('.jpg') || file.toLowerCase().endsWith('.jpeg')) {
             const inputPath = path.join(directory, file);
             const filename = path.parse(file).name;
             const outputPath = path.join(directory, `${filename}.webp`);
@@ -43,6 +44,7 @@ async function processDirectory(directory, quality = 80, width = 1200) {
 async function optimizeImages() {
     console.log('Starting image optimization...');
     await processDirectory(imagesDir, 80, 1200);
+    await processDirectory(convertedDir, 75, 1000);
     // Hero frames: Skipped to maintain max quality (JPG)
     // await processDirectory(heroDir, 70, 800);
     console.log('Optimization complete!');
